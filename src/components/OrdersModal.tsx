@@ -14,7 +14,7 @@ export const OrdersModal: React.FC = () => {
   if (!isOrdersOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E6E2EF] overflow-hidden my-auto max-h-[90vh] flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#E6E2EF] bg-[#FAF8FD]">

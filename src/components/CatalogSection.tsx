@@ -105,8 +105,8 @@ export const CatalogSection: React.FC = () => {
     sortBy !== 'featured';
 
   return (
-    <section id="catalog-section" className="py-12 lg:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="catalog-section" className="py-12 lg:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
         {/* Section Header & Subtitle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
@@ -215,7 +215,7 @@ export const CatalogSection: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-7 xl:gap-8">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

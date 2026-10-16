@@ -22,8 +22,8 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-[#F6F4FA]/90 backdrop-blur-md border-b border-[#E6E2EF]">
       {/* Top Banner with Delivery Promo & Retail/Wholesale Toggle */}
-      <div className="bg-[#5B3DF5] text-white text-xs font-semibold px-4 py-2">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div className="bg-[#5B3DF5] text-white text-xs font-semibold py-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="hidden md:inline">⚡ Direct WhatsApp order dispatch:</span>
             <span>Free delivery on {isWholesaleMode ? 'wholesale orders over $500' : 'retail orders over $100'}</span>
@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 py-3.5">
         <div className="flex items-center justify-between gap-6">
           {/* Zone 1: Brand Wordmark */}
           <div className="flex items-center gap-6 shrink-0">

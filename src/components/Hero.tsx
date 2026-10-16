@@ -34,8 +34,8 @@ export const Hero: React.FC = () => {
     : formatMoney(getRetailPrice(featuredProduct));
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-12 lg:pt-12 lg:pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className="relative overflow-hidden pt-8 pb-12 lg:pt-14 lg:pb-18">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Headline, Value Proposition, Action CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start">

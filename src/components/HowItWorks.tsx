@@ -3,8 +3,8 @@ import { ShoppingBag, MessageCircle, Truck } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   return (
-    <section className="py-12 bg-[#FAF8FD] border-t border-[#E6E2EF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className="py-12 lg:py-16 bg-[#FAF8FD] border-t border-[#E6E2EF]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
         <div className="text-center max-w-xl mx-auto mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-[#5B3DF5]">
             Simple 3-Step Process
@@ -17,7 +17,7 @@ export const HowItWorks: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {/* Step 1 */}
           <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E6E2EF] shadow-xs flex flex-col justify-between">
             <div>

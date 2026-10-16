@@ -12,8 +12,8 @@ export const Footer: React.FC = () => {
   } = useStore();
 
   return (
-    <footer className="bg-[#1B1630] text-[#EFEBFA] pt-14 pb-20 md:pb-14 mt-16 rounded-t-[36px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <footer className="bg-[#1B1630] text-[#EFEBFA] pt-14 pb-20 md:pb-16 lg:pt-16 mt-16 rounded-t-[36px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Brand & Purpose */}
           <div className="md:col-span-5 space-y-4">

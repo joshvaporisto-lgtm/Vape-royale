@@ -11,9 +11,9 @@ export const VolumeCalculator: React.FC = () => {
   const activeIndex = PRICING_TIERS.findIndex((t) => t.min === activeTier.min);
 
   return (
-    <section id="volume-calculator" className="py-10 bg-white border-y border-[#E6E2EF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="bg-[#FAF8FD] rounded-3xl p-6 sm:p-10 border border-[#E6E2EF] shadow-sm">
+    <section id="volume-calculator" className="py-12 lg:py-16 bg-white border-y border-[#E6E2EF]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
+        <div className="bg-[#FAF8FD] rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#E6E2EF] shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left explanation & interactive range slider */}
             <div className="lg:col-span-6 flex flex-col items-start">
