@@ -1,0 +1,6 @@
+{
+  "name": "Stackhouse Vapes — Retail & Wholesale",
+  "description": "Premier retail and wholesale vape storefront featuring multi-flavor matrix ordering, tiered volume discounts, instant WhatsApp checkout, and age verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
