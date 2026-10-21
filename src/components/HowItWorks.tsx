@@ -3,78 +3,75 @@ import { ShoppingBag, MessageCircle, Truck } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   return (
-    <section className="py-12 lg:py-16 bg-[#FAF8FD] border-t border-[#E6E2EF]">
+    <section id="how-it-works" className="py-14 lg:py-18 bg-white border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
-        <div className="text-center max-w-xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#5B3DF5]">
-            Simple 3-Step Process
-          </span>
-          <h2 className="font-['Unbounded'] text-2xl sm:text-3xl font-extrabold text-[#1B1630] tracking-tight mt-1">
-            How Ordering Works
+        <div className="max-w-xl mx-auto text-center mb-12">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+            Fulfillment Protocol
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+            How Orders Are Dispatched
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-500">
-            Frictionless direct-to-warehouse dispatch powered by WhatsApp.
+          <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
+            Direct warehouse transmission with zero payment processor delays.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Step 1 */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E6E2EF] shadow-xs flex flex-col justify-between">
+          <div className="bg-[#F8F9FA] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-2xl bg-[#EFEBFF] text-[#5B3DF5] font-['Unbounded'] font-bold text-sm flex items-center justify-center mb-4">
-                01
+              <div className="text-xs font-mono font-bold text-slate-400 mb-3">
+                STEP 01
               </div>
-              <h3 className="font-['Unbounded'] text-base font-bold text-[#1B1630] mb-2">
-                Configure Flavors & Case Packs
+              <h3 className="text-base font-bold text-slate-950 mb-2">
+                Configure Flavors & Case Units
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Choose custom quantities across multiple flavor options on a single
-                screen without tedious back-and-forth navigation.
+                Choose unit quantities across any combination of flavors. Automatic volume tier discounts scale the price as batch sizes grow.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#E6E2EF] flex items-center gap-2 text-xs font-semibold text-slate-500">
-              <ShoppingBag className="w-4 h-4 text-[#5B3DF5]" />
-              <span>Multi-flavor matrix cart</span>
+            <div className="mt-6 pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-medium text-slate-500">
+              <ShoppingBag className="w-4 h-4 text-slate-900" />
+              <span>Multi-flavor matrix ordering</span>
             </div>
           </div>
 
           {/* Step 2 */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E6E2EF] shadow-xs flex flex-col justify-between">
+          <div className="bg-[#F8F9FA] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-2xl bg-[#1FA855]/10 text-[#1FA855] font-['Unbounded'] font-bold text-sm flex items-center justify-center mb-4">
-                02
+              <div className="text-xs font-mono font-bold text-emerald-600 mb-3">
+                STEP 02
               </div>
-              <h3 className="font-['Unbounded'] text-base font-bold text-[#1B1630] mb-2">
-                Transmit on WhatsApp
+              <h3 className="text-base font-bold text-slate-950 mb-2">
+                Transmit Order via WhatsApp
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Checkout structures your order into a formatted WhatsApp transcript.
-                Tap send, and our dispatch team verifies live allocation within minutes.
+                Your checkout transcript generates a complete itemized manifest sent directly to our warehouse desk. Stock reservation is acknowledged within minutes.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#E6E2EF] flex items-center gap-2 text-xs font-semibold text-slate-500">
-              <MessageCircle className="w-4 h-4 text-[#1FA855]" />
-              <span>Zero website card fees</span>
+            <div className="mt-6 pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-medium text-slate-500">
+              <MessageCircle className="w-4 h-4 text-emerald-600" />
+              <span>Direct dispatch verification</span>
             </div>
           </div>
 
           {/* Step 3 */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E6E2EF] shadow-xs flex flex-col justify-between">
+          <div className="bg-[#F8F9FA] rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-2xl bg-[#EFEBFF] text-[#5B3DF5] font-['Unbounded'] font-bold text-sm flex items-center justify-center mb-4">
-                03
+              <div className="text-xs font-mono font-bold text-slate-400 mb-3">
+                STEP 03
               </div>
-              <h3 className="font-['Unbounded'] text-base font-bold text-[#1B1630] mb-2">
-                Settle & Receive
+              <h3 className="text-base font-bold text-slate-950 mb-2">
+                Doorstep Delivery & Settlement
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Pay on arrival via Cash on Delivery, instant Mobile Money, or direct
-                Bank Wire. Free standard shipping or same-day express available.
+                Courier arrives with factory-sealed goods. Settle upon delivery via Cash on Delivery, Mobile Money, or direct commercial bank wire.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#E6E2EF] flex items-center gap-2 text-xs font-semibold text-slate-500">
-              <Truck className="w-4 h-4 text-[#5B3DF5]" />
-              <span>Doorstep courier delivery</span>
+            <div className="mt-6 pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-medium text-slate-500">
+              <Truck className="w-4 h-4 text-slate-900" />
+              <span>Free delivery on orders $100+</span>
             </div>
           </div>
         </div>

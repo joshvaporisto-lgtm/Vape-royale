@@ -12,17 +12,15 @@ export const CheckoutModal: React.FC = () => {
     cartSavings,
     freeShippingThreshold,
     formatMoney,
-    user,
-    isWholesaleMode,
     submitWhatsAppOrder,
     setIsOrdersOpen,
   } = useStore();
 
-  const [contact, setContact] = useState(user?.contact || '');
-  const [phone, setPhone] = useState(user?.phone || '');
-  const [business, setBusiness] = useState(user?.business || '');
+  const [contact, setContact] = useState('');
+  const [phone, setPhone] = useState('');
+  const [business, setBusiness] = useState('');
   const [street, setStreet] = useState('');
-  const [city, setCity] = useState(user?.region || '');
+  const [city, setCity] = useState('');
   const [landmark, setLandmark] = useState('');
   const [notes, setNotes] = useState('');
   const [shipMethod, setShipMethod] = useState<'standard' | 'express' | 'pickup'>('standard');
@@ -49,11 +47,11 @@ export const CheckoutModal: React.FC = () => {
     setFormError(null);
 
     if (!contact.trim()) {
-      setFormError('Please enter your full contact name.');
+      setFormError('Please provide your full contact name.');
       return;
     }
     if (!phone.trim()) {
-      setFormError('Please enter your WhatsApp contact number.');
+      setFormError('Please provide your WhatsApp contact number.');
       return;
     }
     if (shipMethod !== 'pickup' && (!street.trim() || !city.trim())) {
@@ -88,16 +86,16 @@ export const CheckoutModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-[#E6E2EF] overflow-hidden my-auto max-h-[94vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto bg-slate-950/70 backdrop-blur-xs animate-in fade-in duration-150">
+      <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[94vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E6E2EF] bg-[#FAF8FD]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50">
           <div>
-            <h2 className="font-['Unbounded'] text-base font-bold text-[#1B1630]">
-              WhatsApp Order Checkout
+            <h2 className="text-sm font-bold text-slate-950">
+              Commercial Order Manifest & WhatsApp Dispatch
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">
-              Review details and generate formatted order message
+              Review delivery coordinates and format structured transmission
             </p>
           </div>
           <button
@@ -105,27 +103,26 @@ export const CheckoutModal: React.FC = () => {
               setIsCheckoutOpen(false);
               setLastPlacedOrder(null);
             }}
-            className="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-200 transition-colors cursor-pointer"
+            className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors cursor-pointer"
             aria-label="Close"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Success confirmation view */}
         {lastPlacedOrder ? (
           <div className="p-8 text-center flex flex-col items-center max-w-lg mx-auto">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
-              <Check className="w-8 h-8" />
+            <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3">
+              <Check className="w-6 h-6" />
             </div>
 
-            <h3 className="font-['Unbounded'] text-xl font-bold text-[#1B1630]">
-              Order {lastPlacedOrder.id} Generated!
+            <h3 className="text-lg font-bold text-slate-950">
+              Manifest {lastPlacedOrder.id} Generated
             </h3>
 
-            <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-              Your order transcript has been formatted for WhatsApp. If WhatsApp did
-              not open automatically, click the button below to send your reservation.
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Your order transcript has been compiled for the warehouse WhatsApp desk. Click below if your WhatsApp window did not open automatically.
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3 w-full">
@@ -133,7 +130,7 @@ export const CheckoutModal: React.FC = () => {
                 href={lastPlacedOrder.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#1FA855] text-white font-bold text-xs hover:bg-[#188C46] transition-all shadow-md"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-emerald-700 text-white font-semibold text-xs hover:bg-emerald-800 transition-all shadow-sm"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Open in WhatsApp</span>
@@ -144,9 +141,9 @@ export const CheckoutModal: React.FC = () => {
                   setIsCheckoutOpen(false);
                   setIsOrdersOpen(true);
                 }}
-                className="px-6 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition-colors cursor-pointer"
+                className="px-5 py-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition-colors cursor-pointer"
               >
-                View Order History
+                View Past Orders
               </button>
             </div>
           </div>
@@ -154,29 +151,29 @@ export const CheckoutModal: React.FC = () => {
           /* Checkout Form */
           <form onSubmit={handleSubmit} className="p-6 overflow-y-auto flex-1 space-y-6">
             {formError && (
-              <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+              <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
                 <span>{formError}</span>
               </div>
             )}
 
             {/* Customer Contact Section */}
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                1. Customer & Delivery Contact
-              </h3>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                1. Contact & Recipient Coordinates
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Full Name *
+                    Contact Full Name *
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Alex Henderson"
+                    placeholder="e.g. Jordan Miller"
                     value={contact}
                     onChange={(e) => setContact(e.target.value)}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-[#E6E2EF] focus:outline-none focus:border-[#5B3DF5] bg-[#FAF8FD]"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-slate-900 bg-white"
                   />
                 </div>
 
@@ -190,38 +187,36 @@ export const CheckoutModal: React.FC = () => {
                     placeholder="e.g. +1 555-019-2831"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-[#E6E2EF] focus:outline-none focus:border-[#5B3DF5] bg-[#FAF8FD]"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-slate-900 bg-white"
                   />
                 </div>
 
-                {isWholesaleMode && (
-                  <div className="sm:col-span-2">
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Business Legal Entity (Wholesale)
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Skyline Smoke & Vape LLC"
-                      value={business}
-                      onChange={(e) => setBusiness(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-[#E6E2EF] focus:outline-none focus:border-[#5B3DF5] bg-[#FAF8FD]"
-                    />
-                  </div>
-                )}
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Business / Store Legal Name (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Apex Vapor LLC (or leave blank for personal delivery)"
+                    value={business}
+                    onChange={(e) => setBusiness(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-slate-900 bg-white"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Delivery Method Options */}
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
                 2. Fulfillment Method
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 <label
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex flex-col justify-between ${
+                  className={`p-3 rounded-lg border cursor-pointer transition-all flex flex-col justify-between ${
                     shipMethod === 'standard'
-                      ? 'border-[#5B3DF5] bg-[#FAF8FD] ring-1 ring-[#5B3DF5]'
-                      : 'border-[#E6E2EF] hover:border-slate-300'
+                      ? 'border-slate-900 bg-slate-50 ring-1 ring-slate-900'
+                      : 'border-slate-200 hover:border-slate-300 bg-white'
                   }`}
                 >
                   <div>
@@ -233,19 +228,19 @@ export const CheckoutModal: React.FC = () => {
                       onChange={() => setShipMethod('standard')}
                       className="sr-only"
                     />
-                    <div className="font-semibold text-xs text-[#1B1630]">Standard Delivery</div>
+                    <div className="font-semibold text-xs text-slate-900">Standard Delivery</div>
                     <div className="text-[11px] text-slate-500 mt-0.5">1–3 business days</div>
                   </div>
-                  <div className="mt-2 text-xs font-bold text-[#5B3DF5]">
-                    {isFreeStandard ? 'Free' : formatMoney(STORE_CONFIG.deliveryFee)}
+                  <div className="mt-2 text-xs font-mono font-semibold text-slate-900">
+                    {isFreeStandard ? 'Free ($0.00)' : formatMoney(STORE_CONFIG.deliveryFee)}
                   </div>
                 </label>
 
                 <label
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex flex-col justify-between ${
+                  className={`p-3 rounded-lg border cursor-pointer transition-all flex flex-col justify-between ${
                     shipMethod === 'express'
-                      ? 'border-[#5B3DF5] bg-[#FAF8FD] ring-1 ring-[#5B3DF5]'
-                      : 'border-[#E6E2EF] hover:border-slate-300'
+                      ? 'border-slate-900 bg-slate-50 ring-1 ring-slate-900'
+                      : 'border-slate-200 hover:border-slate-300 bg-white'
                   }`}
                 >
                   <div>
@@ -257,19 +252,19 @@ export const CheckoutModal: React.FC = () => {
                       onChange={() => setShipMethod('express')}
                       className="sr-only"
                     />
-                    <div className="font-semibold text-xs text-[#1B1630]">Same-Day Express</div>
-                    <div className="text-[11px] text-slate-500 mt-0.5">Orders before 2:00 PM</div>
+                    <div className="font-semibold text-xs text-slate-900">Same-Day Express</div>
+                    <div className="text-[11px] text-slate-500 mt-0.5">Priority dispatch</div>
                   </div>
-                  <div className="mt-2 text-xs font-bold text-[#5B3DF5]">
+                  <div className="mt-2 text-xs font-mono font-semibold text-slate-900">
                     {formatMoney(STORE_CONFIG.expressFee)}
                   </div>
                 </label>
 
                 <label
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex flex-col justify-between ${
+                  className={`p-3 rounded-lg border cursor-pointer transition-all flex flex-col justify-between ${
                     shipMethod === 'pickup'
-                      ? 'border-[#5B3DF5] bg-[#FAF8FD] ring-1 ring-[#5B3DF5]'
-                      : 'border-[#E6E2EF] hover:border-slate-300'
+                      ? 'border-slate-900 bg-slate-50 ring-1 ring-slate-900'
+                      : 'border-slate-200 hover:border-slate-300 bg-white'
                   }`}
                 >
                   <div>
@@ -281,10 +276,10 @@ export const CheckoutModal: React.FC = () => {
                       onChange={() => setShipMethod('pickup')}
                       className="sr-only"
                     />
-                    <div className="font-semibold text-xs text-[#1B1630]">Store Pickup</div>
-                    <div className="text-[11px] text-slate-500 mt-0.5">Pickup at dispatch hub</div>
+                    <div className="font-semibold text-xs text-slate-900">Hub Pickup</div>
+                    <div className="text-[11px] text-slate-500 mt-0.5">Direct warehouse dock</div>
                   </div>
-                  <div className="mt-2 text-xs font-bold text-emerald-600">Free</div>
+                  <div className="mt-2 text-xs font-mono font-semibold text-emerald-800">Free</div>
                 </label>
               </div>
 
@@ -300,13 +295,13 @@ export const CheckoutModal: React.FC = () => {
                       placeholder="e.g. 742 Evergreen Terrace, Suite 100"
                       value={street}
                       onChange={(e) => setStreet(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-[#E6E2EF] focus:outline-none focus:border-[#5B3DF5] bg-[#FAF8FD]"
+                      className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-slate-900 bg-white"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      City / Region *
+                      City / State *
                     </label>
                     <input
                       type="text"
@@ -314,20 +309,20 @@ export const CheckoutModal: React.FC = () => {
                       placeholder="e.g. Austin, TX"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-[#E6E2EF] focus:outline-none focus:border-[#5B3DF5] bg-[#FAF8FD]"
+                      className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-slate-900 bg-white"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Landmark / Suite / Gate Code
+                      Delivery Landmark / Gate Notes
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Near blue gate, buzzer #4"
+                      placeholder="e.g. Loading bay #2, buzzer 4"
                       value={landmark}
                       onChange={(e) => setLandmark(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-[#E6E2EF] focus:outline-none focus:border-[#5B3DF5] bg-[#FAF8FD]"
+                      className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-slate-900 bg-white"
                     />
                   </div>
                 </div>
@@ -336,21 +331,21 @@ export const CheckoutModal: React.FC = () => {
 
             {/* Payment Method */}
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                3. Preferred Settlement Method
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                3. Settlement Method
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 {[
                   { id: 'cod', label: 'Cash on Delivery', sub: 'Pay upon courier arrival' },
-                  { id: 'momo', label: 'Mobile Money', sub: 'USSD / App payment on reply' },
-                  { id: 'bank', label: 'Bank Wire Transfer', sub: 'Invoice attached on WhatsApp' },
+                  { id: 'momo', label: 'Mobile Money', sub: 'Instant digital transfer' },
+                  { id: 'bank', label: 'Bank Wire / EFT', sub: 'Commercial invoice on WhatsApp' },
                 ].map((item) => (
                   <label
                     key={item.id}
-                    className={`p-3 rounded-2xl border cursor-pointer transition-all ${
+                    className={`p-3 rounded-lg border cursor-pointer transition-all ${
                       payMethod === item.id
-                        ? 'border-[#5B3DF5] bg-[#FAF8FD] ring-1 ring-[#5B3DF5]'
-                        : 'border-[#E6E2EF] hover:border-slate-300'
+                        ? 'border-slate-900 bg-slate-50 ring-1 ring-slate-900'
+                        : 'border-slate-200 hover:border-slate-300 bg-white'
                     }`}
                   >
                     <input
@@ -361,7 +356,7 @@ export const CheckoutModal: React.FC = () => {
                       onChange={() => setPayMethod(item.id as 'cod' | 'momo' | 'bank')}
                       className="sr-only"
                     />
-                    <div className="font-semibold text-xs text-[#1B1630]">{item.label}</div>
+                    <div className="font-semibold text-xs text-slate-900">{item.label}</div>
                     <div className="text-[11px] text-slate-500 mt-0.5">{item.sub}</div>
                   </label>
                 ))}
@@ -371,38 +366,38 @@ export const CheckoutModal: React.FC = () => {
             {/* Order Notes */}
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Flavor Backups & Instructions (Optional)
+                Order Notes & Flavor Backup Preferences (Optional)
               </label>
               <textarea
                 rows={2}
-                placeholder="Mention any backup flavor substitutions if inventory is tight, or specific drop-off instructions..."
+                placeholder="Mention backup flavor substitutions or special warehouse dispatch instructions..."
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                className="w-full p-3 text-xs rounded-xl border border-[#E6E2EF] focus:outline-none focus:border-[#5B3DF5] bg-[#FAF8FD]"
+                className="w-full p-2.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-slate-900 bg-white"
               />
             </div>
 
             {/* Legal Nicotine Compliance Confirmation */}
-            <div className="p-3.5 rounded-2xl bg-[#FAF8FD] border border-[#E6E2EF]">
+            <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
               <label className="flex items-start gap-2.5 cursor-pointer">
                 <input
                   type="checkbox"
                   required
                   checked={ageConfirmed}
                   onChange={(e) => setAgeConfirmed(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 rounded text-[#5B3DF5] focus:ring-[#5B3DF5] accent-[#5B3DF5]"
+                  className="mt-0.5 w-4 h-4 rounded text-slate-900 focus:ring-slate-900 accent-slate-900"
                 />
                 <span className="text-xs text-slate-700 leading-normal">
-                  I certify under penalty of law that I am of legal purchasing age (18+ or 21+ where applicable) for nicotine products in my jurisdiction.
+                  I certify under penalty of law that I am of legal age (21+ in the US / 18+ where applicable) for nicotine product purchases in my jurisdiction.
                 </span>
               </label>
             </div>
 
             {/* Submit Action Bar */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E6E2EF]">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
               <div>
-                <span className="text-xs text-slate-500 block">Total Due:</span>
-                <span className="font-['Unbounded'] text-xl font-extrabold text-[#1B1630] tabular-nums">
+                <span className="text-xs text-slate-500 block">Total Manifest Settlement:</span>
+                <span className="font-mono text-xl font-extrabold text-slate-950 tabular-nums">
                   {formatMoney(grandTotal)}
                 </span>
               </div>
@@ -411,16 +406,16 @@ export const CheckoutModal: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsCheckoutOpen(false)}
-                  className="px-5 py-3 rounded-full border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="px-4 py-2.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
                 >
-                  Back to Cart
+                  Back to Manifest
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#1FA855] hover:bg-[#188C46] text-white text-xs font-bold shadow-lg shadow-[#1FA855]/25 transition-all cursor-pointer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold shadow-sm transition-all cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Transmit Order to WhatsApp</span>
+                  <span>Transmit Order to WhatsApp Desk</span>
                 </button>
               </div>
             </div>

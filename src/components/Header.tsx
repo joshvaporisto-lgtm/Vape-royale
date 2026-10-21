@@ -1,221 +1,180 @@
 import React from 'react';
-import { ShoppingBag, User, Search, X, Check, Building2 } from 'lucide-react';
+import { ShoppingBag, MessageCircle, Clock } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
-import { CATEGORIES } from '../data/storeData';
+import { CATEGORIES, STORE_CONFIG } from '../data/storeData';
+import { Logo } from './Logo';
 
 export const Header: React.FC = () => {
   const {
     activeCategory,
     setActiveCategory,
-    searchQuery,
-    setSearchQuery,
     cartCount,
     setIsCartOpen,
-    setIsWholesaleModalOpen,
     setIsOrdersOpen,
-    setIsContactOpen,
-    user,
-    isWholesaleMode,
-    toggleWholesaleMode,
+    orders,
   } = useStore();
 
+  const directWhatsAppUrl = `https://wa.me/${STORE_CONFIG.whatsapp}?text=${encodeURIComponent(
+    'Hi Vape Royale, I would like to inquire about stock and commercial order dispatch.'
+  )}`;
+
   return (
-    <header className="sticky top-0 z-40 bg-[#F6F4FA]/90 backdrop-blur-md border-b border-[#E6E2EF]">
-      {/* Top Banner with Delivery Promo & Retail/Wholesale Toggle */}
-      <div className="bg-[#5B3DF5] text-white text-xs font-semibold py-2">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
+      {/* Top Banner: Minimalist Obsidian Bar */}
+      <div className="bg-[#0D1017] text-slate-300 text-xs py-2 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="hidden md:inline">⚡ Direct WhatsApp order dispatch:</span>
-            <span>Free delivery on {isWholesaleMode ? 'wholesale orders over $500' : 'retail orders over $100'}</span>
+          <div className="flex items-center gap-2 tracking-normal text-slate-300">
+            <span className="font-semibold text-white">Commercial Wholesale & Retail Fulfillment</span>
+            <span aria-hidden="true" className="text-slate-600">·</span>
+            <span>Free delivery on orders over ${STORE_CONFIG.freeShippingThreshold}</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggleWholesaleMode}
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors cursor-pointer text-xs"
-              title="Switch between single item retail & bulk case wholesale pricing"
+          <div className="flex items-center gap-4 text-xs font-medium">
+            <a
+              href={directWhatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
             >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Mode: {isWholesaleMode ? 'Wholesale (Case Tiers)' : 'Retail (Per Unit)'}</span>
-              <span className="underline opacity-80 text-[11px] ml-1">
-                {isWholesaleMode ? 'Switch to Retail' : 'Preview Wholesale'}
-              </span>
-            </button>
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Direct WhatsApp Desk</span>
+            </a>
 
-            {user && (
-              <button
-                onClick={() => setIsOrdersOpen(true)}
-                className="hover:underline text-white/90 text-xs hidden lg:inline"
-              >
-                My Orders
-              </button>
-            )}
+            <span aria-hidden="true" className="text-slate-700">|</span>
+
+            <button
+              onClick={() => setIsOrdersOpen(true)}
+              className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+            >
+              <Clock className="w-3.5 h-3.5 text-slate-400" />
+              <span>Past Orders {orders.length > 0 ? `(${orders.length})` : ''}</span>
+            </button>
           </div>
         </div>
       </div>
 
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 py-3.5">
-        <div className="flex items-center justify-between gap-6">
-          {/* Zone 1: Brand Wordmark */}
-          <div className="flex items-center gap-6 shrink-0">
+        <div className="flex items-center justify-between gap-8">
+          {/* Zone 1: Serious Brand Logo */}
+          <div className="shrink-0">
             <a
               href="#/"
               onClick={(e) => {
                 e.preventDefault();
                 setActiveCategory('all');
-                setSearchQuery('');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="flex items-center gap-2.5 text-slate-900 group"
+              className="flex items-center"
+              aria-label="Vape Royale Homepage"
             >
-              <div className="w-3.5 h-7 rounded-sm bg-gradient-to-b from-[#8F7CFF] via-[#5B3DF5] to-[#2E1BA8] shadow-sm shadow-[#5B3DF5]/30 group-hover:scale-105 transition-transform" />
-              <span className="font-['Unbounded'] font-extrabold text-xl tracking-tight text-[#1B1630]">
-                vape royale
-              </span>
+              <Logo size="md" />
             </a>
           </div>
 
           {/* Zone 2: Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
             <button
               onClick={() => {
                 setActiveCategory('all');
-                setSearchQuery('');
+                const el = document.getElementById('catalog-section');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className={`hover:text-[#5B3DF5] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'all' && !searchQuery ? 'text-[#5B3DF5] font-semibold' : ''
+              className={`hover:text-slate-950 transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'all' ? 'text-slate-950 font-bold' : ''
               }`}
             >
-              All Catalog
+              All Inventory
             </button>
             <button
-              onClick={() => setActiveCategory('disposables')}
-              className={`hover:text-[#5B3DF5] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'disposables' ? 'text-[#5B3DF5] font-semibold' : ''
+              onClick={() => {
+                setActiveCategory('disposables');
+                const el = document.getElementById('catalog-section');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className={`hover:text-slate-950 transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'disposables' ? 'text-slate-950 font-bold' : ''
               }`}
             >
               Disposables
             </button>
             <button
-              onClick={() => setActiveCategory('eliquids')}
-              className={`hover:text-[#5B3DF5] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'eliquids' ? 'text-[#5B3DF5] font-semibold' : ''
+              onClick={() => {
+                setActiveCategory('eliquids');
+                const el = document.getElementById('catalog-section');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className={`hover:text-slate-950 transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'eliquids' ? 'text-slate-950 font-bold' : ''
               }`}
             >
               E-Liquids
             </button>
             <button
-              onClick={() => setActiveCategory('podkits')}
-              className={`hover:text-[#5B3DF5] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'podkits' ? 'text-[#5B3DF5] font-semibold' : ''
+              onClick={() => {
+                setActiveCategory('podkits');
+                const el = document.getElementById('catalog-section');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className={`hover:text-slate-950 transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'podkits' ? 'text-slate-950 font-bold' : ''
               }`}
             >
-              Pod Kits
+              Pod Systems
             </button>
             <button
               onClick={() => {
-                const el = document.getElementById('volume-calculator');
+                const el = document.getElementById('how-it-works');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="hover:text-[#5B3DF5] transition-colors whitespace-nowrap cursor-pointer"
+              className="hover:text-slate-950 transition-colors whitespace-nowrap cursor-pointer"
             >
-              Volume Discounts
-            </button>
-            <button
-              onClick={() => setIsContactOpen(true)}
-              className="hover:text-[#5B3DF5] transition-colors whitespace-nowrap cursor-pointer"
-            >
-              Help & FAQ
+              Fulfillment Protocol
             </button>
           </nav>
 
-          {/* Zone 3: Search, Account & Cart Actions */}
-          <div className="flex items-center gap-3">
-            {/* Search Input */}
-            <div className="relative hidden md:block w-48 lg:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search products, flavors..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-8 py-2 text-xs bg-white border border-[#E6E2EF] rounded-full focus:outline-none focus:border-[#5B3DF5] focus:ring-1 focus:ring-[#5B3DF5] transition-all"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
-            </div>
-
-            {/* Wholesale Account Button */}
-            <button
-              onClick={() => setIsWholesaleModalOpen(true)}
-              className="flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-full bg-white border border-[#E6E2EF] hover:border-[#5B3DF5] text-[#1B1630] transition-colors cursor-pointer shrink-0"
-              title="Wholesale account status and login"
+          {/* Zone 3: Direct WhatsApp & Cart Actions */}
+          <div className="flex items-center gap-3 shrink-0">
+            {/* Direct WhatsApp Action */}
+            <a
+              href={directWhatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 transition-colors"
+              title="Chat directly with dispatch desk on WhatsApp"
             >
-              <User className="w-4 h-4 text-[#5B3DF5]" />
-              <span className="hidden sm:inline">
-                {user ? user.business : 'Wholesale Portal'}
-              </span>
-              {user && (
-                <span className="w-2 h-2 rounded-full bg-emerald-500" title="Wholesale active" />
-              )}
-            </button>
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="hidden sm:inline">WhatsApp Dispatch</span>
+              <span className="sm:hidden">Chat</span>
+            </a>
 
             {/* Shopping Cart Button */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-full bg-[#1B1630] text-white hover:bg-[#2C244C] transition-colors cursor-pointer shrink-0 shadow-sm"
+              className="relative flex items-center gap-2.5 px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors cursor-pointer shrink-0 shadow-sm"
               aria-label="Open Shopping Cart"
             >
-              <ShoppingBag className="w-4 h-4 text-[#8F7CFF]" />
-              <span className="hidden sm:inline">Cart</span>
-              <span
-                className={`min-w-5 h-5 px-1.5 flex items-center justify-center rounded-full text-[11px] font-bold ${
-                  cartCount > 0 ? 'bg-[#5B3DF5] text-white' : 'bg-white/20 text-white/80'
-                }`}
-              >
+              <ShoppingBag className="w-4 h-4 text-slate-300" />
+              <span className="hidden sm:inline">Order Bag</span>
+              <span className="min-w-5 h-5 px-1 flex items-center justify-center rounded-md text-[11px] font-bold bg-white/20 text-white tabular-nums">
                 {cartCount}
               </span>
             </button>
           </div>
         </div>
 
-        {/* Mobile Search Bar & Category Chips */}
-        <div className="mt-3 md:hidden">
-          <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Search flavors, brands, coils..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-8 py-2 text-xs bg-white border border-[#E6E2EF] rounded-full focus:outline-none focus:border-[#5B3DF5]"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-        </div>
-
         {/* Quick Category Filter Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none mt-1">
+        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none mt-1 border-t border-slate-100 pt-2.5">
           <button
-            onClick={() => setActiveCategory('all')}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+            onClick={() => {
+              setActiveCategory('all');
+              const el = document.getElementById('catalog-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               activeCategory === 'all'
-                ? 'bg-[#1B1630] text-white'
-                : 'bg-white border border-[#E6E2EF] text-slate-600 hover:text-slate-900'
+                ? 'bg-slate-900 text-white'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
             All Products
@@ -223,11 +182,15 @@ export const Header: React.FC = () => {
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+              onClick={() => {
+                setActiveCategory(cat.id);
+                const el = document.getElementById('catalog-section');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#1B1630] text-white'
-                  : 'bg-white border border-[#E6E2EF] text-slate-600 hover:text-slate-900'
+                  ? 'bg-slate-900 text-white'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               {cat.name}

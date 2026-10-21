@@ -59,21 +59,12 @@ interface StoreContextType {
   setIsCartOpen: (open: boolean) => void;
   isCheckoutOpen: boolean;
   setIsCheckoutOpen: (open: boolean) => void;
-  isWholesaleModalOpen: boolean;
-  setIsWholesaleModalOpen: (open: boolean) => void;
   isOrdersOpen: boolean;
   setIsOrdersOpen: (open: boolean) => void;
-  isContactOpen: boolean;
-  setIsContactOpen: (open: boolean) => void;
 
-  // User & Wholesale Mode
-  user: WholesaleAccount | null;
+  // Pricing Mode
   isWholesaleMode: boolean;
   toggleWholesaleMode: () => void;
-  loginWholesale: (email: string) => boolean;
-  registerWholesale: (account: WholesaleAccount) => void;
-  loadDemoWholesale: () => void;
-  logout: () => void;
 
   // Cart Management
   cart: Record<string, number>;
@@ -124,9 +115,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [activeProductId, setActiveProductId] = useState<string | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [isWholesaleModalOpen, setIsWholesaleModalOpen] = useState(false);
   const [isOrdersOpen, setIsOrdersOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
 
   // Toast feedback
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -137,7 +126,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }, 2800);
   };
 
-  // Persistent user & preview state
+  // Persistent user state (optional)
   const [user, setUser] = useState<WholesaleAccount | null>(() => {
     try {
       const stored = localStorage.getItem('sh_user');
@@ -147,19 +136,10 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }
   });
 
-  const [previewWholesale, setPreviewWholesale] = useState(false);
-  const isWholesaleMode = Boolean(user) || previewWholesale;
-
+  // Always enable direct wholesale case-tier volume pricing for all visitors
+  const isWholesaleMode = true;
   const toggleWholesaleMode = () => {
-    if (user) {
-      showToast('You are logged in as a verified wholesale account');
-    } else {
-      setPreviewWholesale((prev) => {
-        const next = !prev;
-        showToast(next ? 'Wholesale Case Pricing Enabled' : 'Retail Pricing Enabled');
-        return next;
-      });
-    }
+    showToast('Automatic bulk discounts are active on all items');
   };
 
   // Age verification state
@@ -221,8 +201,9 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     return `${STORE_CONFIG.currency}${amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
   };
 
+  // Direct catalog unit price
   const getRetailPrice = (p: Product) => {
-    return Math.ceil(p.price * STORE_CONFIG.retailMarkup) - 0.01;
+    return p.price;
   };
 
   const getTierForUnits = (units: number): PricingTier => {
@@ -235,10 +216,8 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       .reduce((acc, [, qty]) => acc + qty, 0);
   };
 
+  // Automatic volume discount tier applied to everyone
   const getUnitPrice = (p: Product, unitsOfThisProduct: number) => {
-    if (!isWholesaleMode) {
-      return getRetailPrice(p);
-    }
     const tier = getTierForUnits(Math.max(unitsOfThisProduct, 1));
     return Number((p.price * (1 - tier.off)).toFixed(2));
   };
@@ -277,16 +256,16 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const cartListTotal = useMemo(() => {
     return cartLineItems.reduce((acc, item) => {
-      const basePrice = isWholesaleMode ? item.product.price : getRetailPrice(item.product);
+      const basePrice = item.product.price;
       return acc + basePrice * item.quantity;
     }, 0);
-  }, [cartLineItems, isWholesaleMode]);
+  }, [cartLineItems]);
 
   const cartSavings = useMemo(() => {
     return Math.max(0, Number((cartListTotal - cartSubtotal).toFixed(2)));
   }, [cartListTotal, cartSubtotal]);
 
-  const freeShippingThreshold = isWholesaleMode ? STORE_CONFIG.freeWholesale : STORE_CONFIG.freeRetail;
+  const freeShippingThreshold = STORE_CONFIG.freeShippingThreshold || 100;
 
   // Cart actions
   const addToCart = (productId: string, flavor: string, quantity: number) => {
@@ -300,9 +279,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   const updateCartQty = (key: string, delta: number) => {
-    const [productId] = key.split('|');
-    const product = PRODUCTS.find((p) => p.id === productId);
-    const step = isWholesaleMode && product ? product.pack : 1;
+    const step = 1;
 
     setCart((prev) => {
       const current = prev[key] || 0;
@@ -332,49 +309,6 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setCart({});
   };
 
-  // Wholesale account actions
-  const loginWholesale = (email: string) => {
-    try {
-      const stored = localStorage.getItem(`sh_acct_${email.toLowerCase().trim()}`);
-      if (stored) {
-        const account = JSON.parse(stored);
-        setUser(account);
-        localStorage.setItem('sh_user', JSON.stringify(account));
-        showToast(`Welcome back, ${account.business}`);
-        return true;
-      }
-    } catch {
-      // storage error
-    }
-    return false;
-  };
-
-  const registerWholesale = (account: WholesaleAccount) => {
-    setUser(account);
-    try {
-      localStorage.setItem('sh_user', JSON.stringify(account));
-      localStorage.setItem(`sh_acct_${account.email.toLowerCase().trim()}`, JSON.stringify(account));
-    } catch {
-      // storage error
-    }
-    showToast(`Wholesale account registered for ${account.business}`);
-  };
-
-  const loadDemoWholesale = () => {
-    registerWholesale(DEMO_WHOLESALE_ACCOUNT);
-    setIsWholesaleModalOpen(false);
-  };
-
-  const logout = () => {
-    setUser(null);
-    setPreviewWholesale(false);
-    try {
-      localStorage.removeItem('sh_user');
-    } catch {
-      // storage error
-    }
-    showToast('Logged out of wholesale account');
-  };
 
   // Order submission
   const submitWhatsAppOrder = (data: CheckoutData) => {
@@ -406,7 +340,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     // Construct formatted WhatsApp message with markdown
     const messageLines = [
-      `*New ${isWholesaleMode ? 'Wholesale' : 'Retail'} Order ${orderId}*`,
+      `*New Order ${orderId}*`,
       `📅 ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`,
       '',
       '*Order Items:*',
@@ -518,20 +452,11 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         setIsCartOpen,
         isCheckoutOpen,
         setIsCheckoutOpen,
-        isWholesaleModalOpen,
-        setIsWholesaleModalOpen,
         isOrdersOpen,
         setIsOrdersOpen,
-        isContactOpen,
-        setIsContactOpen,
 
-        user,
         isWholesaleMode,
         toggleWholesaleMode,
-        loginWholesale,
-        registerWholesale,
-        loadDemoWholesale,
-        logout,
 
         cart,
         cartLineItems,

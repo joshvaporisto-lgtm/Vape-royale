@@ -1,188 +1,159 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, MessageCircle, Sparkles, Zap, ShieldCheck } from 'lucide-react';
+import { ArrowRight, MessageCircle, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { PRODUCTS, STORE_CONFIG } from '../data/storeData';
 
 interface FlavorOption {
   name: string;
-  hue: number;
   flavorDesc: string;
 }
 
 const HERO_FLAVORS: FlavorOption[] = [
-  { name: 'Grape Ice', hue: 285, flavorDesc: 'Concord grape chilled with frosted menthol' },
-  { name: 'Blue Razz', hue: 215, flavorDesc: 'Tangy blue raspberry with candy zest' },
-  { name: 'Watermelon', hue: 350, flavorDesc: 'Sweet ripe watermelon with icy undertones' },
-  { name: 'Mango Burst', hue: 38, flavorDesc: 'Alphonso tropical mango nectar' },
-  { name: 'Cool Mint', hue: 160, flavorDesc: 'Spearmint and pure glacial leaf essence' },
+  { name: 'Grape Ice', flavorDesc: 'Concord grape chilled with menthol finish' },
+  { name: 'Blue Razz', flavorDesc: 'Tangy blue raspberry with crisp citrus' },
+  { name: 'Watermelon', flavorDesc: 'Natural ripe watermelon with frosted finish' },
+  { name: 'Mango Burst', flavorDesc: 'Alphonso tropical mango essence' },
+  { name: 'Cool Mint', flavorDesc: 'Glacial spearmint leaf formulation' },
 ];
 
 export const Hero: React.FC = () => {
   const {
-    isWholesaleMode,
     formatMoney,
-    getRetailPrice,
     setActiveProductId,
-    setIsWholesaleModalOpen,
-    setActiveCategory,
   } = useStore();
 
   const [activeFlavor, setActiveFlavor] = useState<FlavorOption>(HERO_FLAVORS[0]);
   const featuredProduct = PRODUCTS.find((p) => p.id === 'geek-bar-25k') || PRODUCTS[0];
-  const priceDisplay = isWholesaleMode
-    ? `${formatMoney(featuredProduct.price)} / unit (case of ${featuredProduct.pack})`
-    : formatMoney(getRetailPrice(featuredProduct));
+
+  const directWhatsAppUrl = `https://wa.me/${STORE_CONFIG.whatsapp}?text=${encodeURIComponent(
+    'Hi Vape Royale, I would like to inquire about current stock allocation and order dispatch.'
+  )}`;
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-12 lg:pt-14 lg:pb-18">
+    <section className="relative overflow-hidden pt-8 pb-12 lg:pt-16 lg:pb-20 border-b border-slate-200 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: Headline, Value Proposition, Action CTAs */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Serious Headline & Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Context Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E6E2EF] text-xs font-semibold text-[#5B3DF5] shadow-xs mb-5">
-              <Sparkles className="w-3.5 h-3.5 text-[#5B3DF5]" />
-              <span>Direct Wholesale & Consumer Fulfillment</span>
+            {/* Context Notice */}
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-900" />
+              <span>Commercial Distribution & Direct Fulfillment</span>
             </div>
 
-            <h1 className="font-['Unbounded'] text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1B1630] leading-[1.08] text-balance">
-              Every flavor, by the piece or by the case.
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 leading-[1.08] text-balance">
+              Direct Commercial Vapor Distribution & Fast Dispatch.
             </h1>
 
             <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
-              Disposables, premium nicotine salts, pod kits, and replacement coils.
-              Assemble customized flavor quantities, transmit your order over WhatsApp,
-              and receive instant inventory reservation.
+              Authentic factory-sealed vaporizers, closed pod systems, and premium nicotine solutions. Select exact unit quantities per flavor with transparent volume tier pricing and direct WhatsApp dispatch verification.
             </p>
 
-            {/* Primary Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-3 w-full sm:w-auto">
+            {/* Action Buttons */}
+            <div className="mt-8 flex flex-wrap items-center gap-3.5 w-full sm:w-auto">
               <button
                 onClick={() => {
                   const catalog = document.getElementById('catalog-section');
                   if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#5B3DF5] text-white font-bold text-sm hover:bg-[#4A2FE0] hover:shadow-lg hover:shadow-[#5B3DF5]/25 transition-all cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-slate-950 text-white font-semibold text-sm hover:bg-slate-800 transition-all cursor-pointer shadow-sm"
               >
-                <span>Shop Full Catalog</span>
+                <span>View Product Inventory</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <button
-                onClick={() => setIsWholesaleModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#1B1630] border border-[#E6E2EF] hover:border-[#5B3DF5] font-semibold text-sm transition-colors cursor-pointer"
+              <a
+                href={directWhatsAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 shadow-sm transition-all cursor-pointer"
               >
-                <span>Wholesale Application</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-[#EFEBFF] text-[#5B3DF5] font-bold">
-                  Up to 20% Off
-                </span>
-              </button>
+                <MessageCircle className="w-4 h-4" />
+                <span>Transmit Order via WhatsApp</span>
+              </a>
             </div>
 
-            {/* Trust Markers Bar */}
-            <div className="mt-8 pt-6 border-t border-[#E6E2EF]/80 grid grid-cols-3 gap-3 w-full max-w-lg">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                  <Check className="w-3.5 h-3.5 text-emerald-600" />
-                </div>
-                <span>WhatsApp Dispatch</span>
+            {/* Quiet Architectural Proof Row */}
+            <div className="mt-10 pt-6 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+              <div className="flex items-center gap-2.5 text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
+                <span className="font-semibold">Factory Batch Authenticity</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center shrink-0">
-                  <Zap className="w-3.5 h-3.5 text-indigo-600" />
-                </div>
-                <span>Cash on Delivery</span>
+              <div className="flex items-center gap-2.5 text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
+                <span className="font-semibold">Direct Courier Tracking</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
-                </div>
-                <span>Authentic Lab Batch</span>
+              <div className="flex items-center gap-2.5 text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
+                <span className="font-semibold">Settlement on Delivery</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Dynamic Interactive Showcase Stage */}
+          {/* Right Column: High-End Studio Product Showcase */}
           <div className="lg:col-span-5">
-            <div
-              className="relative rounded-3xl p-6 sm:p-8 min-h-[440px] flex flex-col justify-between overflow-hidden shadow-xl transition-all duration-700 border border-white/50"
-              style={{
-                background: `radial-gradient(65% 55% at 55% 45%, hsl(${activeFlavor.hue}, 95%, 72%, 0.75), transparent 75%), radial-gradient(75% 65% at 10% 100%, hsl(${activeFlavor.hue + 35}, 90%, 68%, 0.4), transparent 70%), #EEEAF6`,
-              }}
-            >
-              {/* Top Tag & Price Callout */}
-              <div className="flex items-start justify-between z-10">
-                <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 shadow-sm border border-white">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
-                    Featured Flagship
-                  </span>
-                  <div className="font-['Unbounded'] font-bold text-sm text-[#1B1630]">
-                    {featuredProduct.name}
+            <div className="rounded-2xl p-6 sm:p-7 bg-[#F7F8FA] border border-slate-200 shadow-sm flex flex-col justify-between">
+              {/* Product Header */}
+              <div className="flex items-start justify-between pb-4 border-b border-slate-200">
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                    Flagship Inventory Allocation
                   </div>
-                  <div className="text-xs font-bold text-[#5B3DF5] mt-0.5">
-                    {priceDisplay}
+                  <h3 className="font-bold text-base text-slate-950 mt-0.5">
+                    {featuredProduct.name}
+                  </h3>
+                  <div className="text-xs font-semibold text-slate-700 mt-0.5">
+                    {formatMoney(featuredProduct.price)} <span className="font-normal text-slate-500">/ unit (base rate)</span>
                   </div>
                 </div>
 
                 <button
                   onClick={() => setActiveProductId(featuredProduct.id)}
-                  className="px-3.5 py-1.5 rounded-full bg-[#1B1630] text-white text-xs font-bold hover:bg-[#322A56] transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors cursor-pointer"
                 >
                   Configure Flavors
                 </button>
               </div>
 
-              {/* Dynamic Showcase Visual: Real product photo with ambient glow */}
-              <div className="relative my-4 flex items-center justify-center">
-                <span
-                  className="absolute left-0 bottom-4 font-['Unbounded'] font-black text-4xl sm:text-5xl select-none transition-colors duration-500 pointer-events-none opacity-20"
-                  style={{ color: `hsl(${activeFlavor.hue}, 80%, 25%)` }}
-                >
-                  {activeFlavor.name}
-                </span>
+              {/* Clean Studio Product Frame */}
+              <div className="my-6 relative aspect-square rounded-xl overflow-hidden bg-white border border-slate-200 flex items-center justify-center p-4">
+                <img
+                  src={encodeURI(
+                    featuredProduct.image
+                      ? (featuredProduct.image.startsWith('/') ? featuredProduct.image : `/${featuredProduct.image}`)
+                      : '/Disposable Vape - 25000 puffs.jpg'
+                  )}
+                  alt={featuredProduct.name}
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
 
-                <div className="relative w-52 sm:w-64 aspect-square rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 group bg-white/40 backdrop-blur-xs z-10 transition-transform duration-300 hover:scale-105">
-                  <img
-                    src={encodeURI(
-                      featuredProduct.image
-                        ? (featuredProduct.image.startsWith('/') ? featuredProduct.image : `/${featuredProduct.image}`)
-                        : '/Disposable Vape - 25000 puffs.jpg'
-                    )}
-                    alt={featuredProduct.name}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#1B1630]/85 text-white text-[10px] font-bold shadow-md">
-                    {activeFlavor.name}
-                  </div>
+                <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded bg-slate-900/90 text-white text-[11px] font-mono tabular-nums">
+                  Current Flavor: {activeFlavor.name}
                 </div>
               </div>
 
-              {/* Bottom Interactive Flavor Color Chips */}
-              <div className="z-10 bg-white/70 backdrop-blur-md rounded-2xl p-2.5 shadow-sm border border-white/80">
-                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2 px-1">
-                  Preview Profile: <span className="text-[#1B1630] normal-case">{activeFlavor.flavorDesc}</span>
+              {/* Flavor Selector Matrix */}
+              <div>
+                <div className="text-xs text-slate-600 mb-2 flex items-center justify-between">
+                  <span className="font-semibold text-slate-700">Flavor Profile:</span>
+                  <span className="text-slate-500">{activeFlavor.flavorDesc}</span>
                 </div>
-                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-0.5">
+
+                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
                   {HERO_FLAVORS.map((f) => {
                     const isSelected = activeFlavor.name === f.name;
                     return (
                       <button
                         key={f.name}
                         onClick={() => setActiveFlavor(f)}
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap shrink-0 border ${
                           isSelected
-                            ? 'bg-[#1B1630] text-white shadow-sm'
-                            : 'bg-white/80 text-slate-700 hover:bg-white'
+                            ? 'bg-slate-900 text-white border-slate-900 font-semibold'
+                            : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
                         }`}
                       >
-                        <span
-                          className="w-3.5 h-3.5 rounded-full shrink-0"
-                          style={{
-                            background: `linear-gradient(135deg, hsl(${f.hue}, 95%, 75%), hsl(${f.hue}, 80%, 45%))`,
-                          }}
-                        />
-                        <span>{f.name}</span>
+                        {f.name}
                       </button>
                     );
                   })}

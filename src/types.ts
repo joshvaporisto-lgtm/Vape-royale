@@ -82,9 +82,10 @@ export interface StoreConfig {
   name: string;
   whatsapp: string;
   currency: string;
-  freeRetail: number;
-  freeWholesale: number;
+  freeShippingThreshold: number;
   deliveryFee: number;
   expressFee: number;
-  retailMarkup: number;
+  freeRetail?: number;
+  freeWholesale?: number;
+  retailMarkup?: number;
 }

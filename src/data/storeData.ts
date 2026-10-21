@@ -2,13 +2,15 @@ import { Category, PricingTier, Product, StoreConfig, WholesaleAccount } from '.
 
 export const STORE_CONFIG: StoreConfig = {
   name: 'Vape Royale',
-  whatsapp: '15550001234', // International format digits only
+  // Direct WhatsApp dispatch contact (International digits without + or spaces)
+  whatsapp: (import.meta.env.VITE_WHATSAPP_NUMBER as string) || '15550001234',
   currency: '$',
+  freeShippingThreshold: 100,
   freeRetail: 100,
-  freeWholesale: 500,
+  freeWholesale: 100,
   deliveryFee: 8,
   expressFee: 20,
-  retailMarkup: 1.7, // Retail price = ceil(wholesale * 1.7) - 0.01
+  retailMarkup: 1.0,
 };
 
 export const CATEGORIES: Category[] = [

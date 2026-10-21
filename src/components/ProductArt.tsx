@@ -23,11 +23,13 @@ export const ProductArt: React.FC<ProductArtProps> = ({
     const rawPath = product.image.startsWith('/') ? product.image : `/${product.image}`;
     const cleanSrc = encodeURI(rawPath);
     return (
-      <div className={`relative w-full h-full overflow-hidden bg-white flex items-center justify-center ${className}`}>
+      <div className={`relative w-full h-full overflow-hidden bg-slate-50 flex items-center justify-center ${className}`}>
         <img
           src={cleanSrc}
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          alt={`${product.name} by ${product.brand} - Wholesale & Retail Vape (${product.nic !== '—' ? product.nic + ' Nicotine' : 'Authentic Device'})`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105"
           referrerPolicy="no-referrer"
           onError={() => setImgError(true)}
         />

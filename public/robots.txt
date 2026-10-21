@@ -1,0 +1,10 @@
+# Vape Royale - Robots.txt
+# https://vaperoyale.com
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /images/
+
+# Sitemaps
+Sitemap: https://vaperoyale.com/sitemap.xml

@@ -1,47 +1,43 @@
 import React from 'react';
 import { useStore } from '../context/StoreContext';
-import { CATEGORIES } from '../data/storeData';
-import { ShieldAlert } from 'lucide-react';
+import { CATEGORIES, STORE_CONFIG } from '../data/storeData';
+import { ShieldAlert, MessageCircle, Clock } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   const {
     setActiveCategory,
-    setIsWholesaleModalOpen,
     setIsOrdersOpen,
-    setIsContactOpen,
   } = useStore();
 
+  const directWhatsAppUrl = `https://wa.me/${STORE_CONFIG.whatsapp}?text=${encodeURIComponent(
+    'Hi Vape Royale, I have an inquiry regarding product inventory and commercial order dispatch.'
+  )}`;
+
   return (
-    <footer className="bg-[#1B1630] text-[#EFEBFA] pt-14 pb-20 md:pb-16 lg:pt-16 mt-16 rounded-t-[36px]">
+    <footer className="bg-[#0B0D11] text-slate-300 pt-14 pb-20 md:pb-16 mt-16 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Brand & Purpose */}
-          <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-3.5 h-7 rounded-sm bg-gradient-to-b from-[#8F7CFF] via-[#5B3DF5] to-[#2E1BA8]" />
-              <span className="font-['Unbounded'] font-extrabold text-2xl tracking-tight text-white">
-                vape royale
-              </span>
-            </div>
+          <div className="md:col-span-5 space-y-3.5">
+            <Logo theme="dark" size="lg" />
 
-            <p className="text-xs sm:text-sm text-[#A49EBF] leading-relaxed max-w-sm">
-              Disposables, pods, e-liquids, and hardware accessories. Sold by the piece
-              or by the bulk case. Transmit your order via WhatsApp and our dispatch team
-              confirms stock allocation and courier dispatch within minutes.
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              Authorized commercial distribution and direct-to-consumer fulfillment of lab-certified vaporizers, pods, and nicotine e-liquids. Manifest orders are compiled for instantaneous WhatsApp desk verification and courier dispatch.
             </p>
 
-            <div className="pt-2 text-xs text-[#A49EBF] space-y-1">
-              <div>📍 Direct Dispatch Hub & Fulfillment Warehouse</div>
-              <div>⚡ Orders confirmed Monday – Sunday (9:00 AM – 9:00 PM)</div>
+            <div className="pt-2 text-xs text-slate-400 space-y-1 font-mono text-[11px]">
+              <div>Facility: Direct Warehouse Dispatch Hub</div>
+              <div>Operating Hours: Mon – Sun (09:00 – 21:00 UTC)</div>
             </div>
           </div>
 
           {/* Catalog Categories */}
           <div className="md:col-span-4 space-y-3">
-            <h3 className="font-['Unbounded'] text-xs font-bold uppercase tracking-wider text-white">
-              Shop Catalog
-            </h3>
-            <ul className="space-y-2 text-xs text-[#A49EBF]">
+            <div className="text-xs font-bold uppercase tracking-wider text-white">
+              Inventory Categories
+            </div>
+            <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <button
                   onClick={() => {
@@ -51,7 +47,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  All Products
+                  All Inventory
                 </button>
               </li>
               {CATEGORIES.map((cat) => (
@@ -71,65 +67,67 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Business & Support */}
+          {/* Direct Support & Orders */}
           <div className="md:col-span-3 space-y-3">
-            <h3 className="font-['Unbounded'] text-xs font-bold uppercase tracking-wider text-white">
-              Wholesale & Help
-            </h3>
-            <ul className="space-y-2 text-xs text-[#A49EBF]">
+            <div className="text-xs font-bold uppercase tracking-wider text-white">
+              Dispatch & Manifests
+            </div>
+            <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <button
-                  onClick={() => setIsWholesaleModalOpen(true)}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <a
+                  href={directWhatsAppUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors inline-flex items-center gap-1.5 text-emerald-400 font-semibold"
                 >
-                  Apply for Wholesale Account
-                </button>
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>Direct WhatsApp Dispatch Desk</span>
+                </a>
               </li>
               <li>
                 <button
                   onClick={() => setIsOrdersOpen(true)}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  My Orders & Reorder
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>Past Orders & Reorder Manifest</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => {
-                    const el = document.getElementById('volume-calculator');
+                    const el = document.getElementById('how-it-works');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Volume Discount Ladder
+                  Fulfillment Protocol
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => setIsContactOpen(true)}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  FAQ & WhatsApp Contact
-                </button>
+              <li className="pt-2 text-slate-500 text-[11px]">
+                Dedicated Dispatch Line:
+                <div className="text-white font-mono font-semibold mt-0.5">
+                  +{STORE_CONFIG.whatsapp}
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Mandatory Legal Nicotine Warning Banner */}
-        <div className="mt-12 p-4 sm:p-5 rounded-2xl border-2 border-white/20 bg-white/5 flex items-center gap-3">
-          <ShieldAlert className="w-6 h-6 text-[#FF6FA0] shrink-0" />
-          <div className="font-['Unbounded'] text-xs sm:text-sm font-extrabold uppercase tracking-wide text-white leading-snug">
+        <div className="mt-12 p-4 sm:p-5 rounded-xl border border-white/20 bg-white/5 flex items-center gap-3">
+          <ShieldAlert className="w-5 h-5 text-slate-200 shrink-0" />
+          <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wide text-white leading-snug">
             WARNING: This product contains nicotine. Nicotine is an addictive chemical.
           </div>
         </div>
 
         {/* Legal & Age Disclaimer */}
-        <div className="mt-6 pt-6 border-t border-white/10 text-[11px] text-[#A49EBF] leading-relaxed flex flex-col md:flex-row justify-between gap-4">
+        <div className="mt-6 pt-6 border-t border-white/10 text-[11px] text-slate-500 leading-relaxed flex flex-col md:flex-row justify-between gap-4">
           <p className="max-w-3xl">
-            We strictly enforce age verification and do not sell to anyone under the legal age (18+ / 21+). Customers are solely responsible for adhering to vaping statutes in their respective jurisdictions. This storefront operates direct WhatsApp message generation; no card payments are processed directly on this website.
+            We strictly enforce adult age verification protocols. Products sold are intended solely for adult consumers of legal age (21+ in the United States / 18+ where governed by international statute). All manifests are confirmed directly with our warehouse desk.
           </p>
-          <div className="shrink-0 text-white/60">
+          <div className="shrink-0 text-slate-400 font-mono text-[11px]">
             © {new Date().getFullYear()} Vape Royale Distribution. All rights reserved.
           </div>
         </div>
