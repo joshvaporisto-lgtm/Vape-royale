@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <defs>
-    <linearGradient id="titanium-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E2E8F0" />
-      <stop offset="50%" stop-color="#94A3B8" />
-      <stop offset="100%" stop-color="#475569" />
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE799" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#997300" />
     </linearGradient>
     <linearGradient id="dark-plate" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E222A" />
-      <stop offset="100%" stop-color="#0B0D11" />
+      <stop offset="0%" stop-color="#141822" />
+      <stop offset="100%" stop-color="#080B10" />
     </linearGradient>
   </defs>
   <!-- Background Shield Plate -->
-  <rect width="32" height="32" rx="7" fill="url(#dark-plate)" stroke="#334155" stroke-width="0.8" />
+  <rect width="32" height="32" rx="7" fill="url(#dark-plate)" stroke="#D4AF37" stroke-width="0.8" stroke-opacity="0.4" />
   
   <!-- Crown Apex -->
-  <path d="M11 9.5L13.5 12.5L16 8L18.5 12.5L21 9.5L20 13.5H12L11 9.5Z" fill="url(#titanium-grad)" />
+  <path d="M11 9.5L13.5 12.5L16 8L18.5 12.5L21 9.5L20 13.5H12L11 9.5Z" fill="url(#gold-grad)" />
   
   <!-- Hexagonal Shield / Monogram VR Base -->
-  <path d="M16 14.5L21.5 17.5V23.5L16 27L10.5 23.5V17.5L16 14.5Z" stroke="url(#titanium-grad)" stroke-width="1.2" fill="none" />
+  <path d="M16 14.5L21.5 17.5V23.5L16 27L10.5 23.5V17.5L16 14.5Z" stroke="url(#gold-grad)" stroke-width="1.2" fill="none" />
   
   <!-- VR Monogram Core Strokes -->
-  <path d="M13 18.5L16 24.5L19 18.5" stroke="url(#titanium-grad)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M16 18.5V24.5" stroke="url(#titanium-grad)" stroke-width="1.2" stroke-linecap="round" />
+  <path d="M13 18.5L16 24.5L19 18.5" stroke="url(#gold-grad)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M16 18.5V24.5" stroke="url(#gold-grad)" stroke-width="1.2" stroke-linecap="round" />
 </svg>

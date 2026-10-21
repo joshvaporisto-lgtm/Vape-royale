@@ -23,7 +23,7 @@ export const ProductArt: React.FC<ProductArtProps> = ({
     const rawPath = product.image.startsWith('/') ? product.image : `/${product.image}`;
     const cleanSrc = encodeURI(rawPath);
     return (
-      <div className={`relative w-full h-full overflow-hidden bg-slate-50 flex items-center justify-center ${className}`}>
+      <div className={`relative w-full h-full overflow-hidden bg-stone-50 flex items-center justify-center ${className}`}>
         <img
           src={cleanSrc}
           alt={`${product.name} by ${product.brand} - Wholesale & Retail Vape (${product.nic !== '—' ? product.nic + ' Nicotine' : 'Authentic Device'})`}
@@ -235,7 +235,7 @@ export const ProductArt: React.FC<ProductArtProps> = ({
       viewBox="0 0 120 120"
       className={`w-full h-full select-none transition-all duration-300 ${className}`}
       style={{
-        background: `radial-gradient(60% 55% at 50% 55%, hsl(${h}, 95%, 72%, 0.38), transparent 75%), #F1EDF8`,
+        background: `radial-gradient(60% 55% at 50% 55%, hsl(${h}, 95%, 72%, 0.35), transparent 75%), #FAF9F5`,
       }}
       role="img"
       aria-label={product.name}

@@ -33,7 +33,7 @@ export const MobileTabBar: React.FC = () => {
 
       {/* Mobile Fixed Bottom Navigation Bar */}
       <nav
-        className="md:hidden fixed bottom-3 left-3 right-3 z-40 bg-white/95 backdrop-blur-lg border border-slate-200 rounded-2xl shadow-xl px-2 py-1.5 flex items-center justify-around"
+        className="md:hidden fixed bottom-3 left-3 right-3 z-40 bg-white/95 backdrop-blur-lg border border-stone-200 rounded-2xl shadow-xl px-2 py-1.5 flex items-center justify-around"
         aria-label="Mobile Navigation"
       >
         {/* Home */}
@@ -43,7 +43,7 @@ export const MobileTabBar: React.FC = () => {
             setSearchQuery('');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="flex flex-col items-center justify-center p-2 text-slate-500 hover:text-slate-950 cursor-pointer"
+          className="flex flex-col items-center justify-center p-2 text-stone-500 hover:text-[#0B0E14] cursor-pointer"
         >
           <Home className="w-5 h-5" />
           <span className="text-[10px] font-semibold mt-1">Home</span>
@@ -55,7 +55,7 @@ export const MobileTabBar: React.FC = () => {
             const el = document.getElementById('catalog-section');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="flex flex-col items-center justify-center p-2 text-slate-500 hover:text-slate-950 cursor-pointer"
+          className="flex flex-col items-center justify-center p-2 text-stone-500 hover:text-[#0B0E14] cursor-pointer"
         >
           <Layers className="w-5 h-5" />
           <span className="text-[10px] font-semibold mt-1">Catalog</span>
@@ -75,12 +75,12 @@ export const MobileTabBar: React.FC = () => {
         {/* Cart with Live Count Badge */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className="relative flex flex-col items-center justify-center p-2 text-slate-500 hover:text-slate-950 cursor-pointer"
+          className="relative flex flex-col items-center justify-center p-2 text-stone-500 hover:text-[#0B0E14] cursor-pointer"
         >
           <div className="relative">
             <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-sm bg-slate-950 text-white text-[9px] font-mono font-bold flex items-center justify-center">
+              <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-sm bg-[#0B0E14] text-amber-300 text-[9px] font-mono font-bold flex items-center justify-center border border-amber-500/20">
                 {cartCount > 99 ? '99+' : cartCount}
               </span>
             )}
@@ -91,12 +91,12 @@ export const MobileTabBar: React.FC = () => {
         {/* Past Orders */}
         <button
           onClick={() => setIsOrdersOpen(true)}
-          className="relative flex flex-col items-center justify-center p-2 text-slate-500 hover:text-slate-950 cursor-pointer"
+          className="relative flex flex-col items-center justify-center p-2 text-stone-500 hover:text-[#0B0E14] cursor-pointer"
         >
           <div className="relative">
             <Clock className="w-5 h-5" />
             {orders.length > 0 && (
-              <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-slate-900" />
+              <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-amber-600" />
             )}
           </div>
           <span className="text-[10px] font-semibold mt-1">Orders</span>

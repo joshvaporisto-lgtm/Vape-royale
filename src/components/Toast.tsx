@@ -9,8 +9,8 @@ export const Toast: React.FC = () => {
 
   return (
     <div className="fixed top-20 right-4 sm:right-6 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
-      <div className="px-4 py-2.5 rounded-lg bg-slate-950 text-white text-xs font-medium shadow-xl border border-slate-800 flex items-center gap-2.5 max-w-sm">
-        <div className="w-4 h-4 rounded-full bg-emerald-600 flex items-center justify-center shrink-0">
+      <div className="px-4 py-2.5 rounded-lg bg-[#0B0E14] text-white text-xs font-medium shadow-xl border border-amber-500/30 flex items-center gap-2.5 max-w-sm">
+        <div className="w-4 h-4 rounded-full bg-emerald-700 flex items-center justify-center shrink-0">
           <Check className="w-2.5 h-2.5 text-white stroke-[3]" />
         </div>
         <span className="truncate">{toastMessage}</span>

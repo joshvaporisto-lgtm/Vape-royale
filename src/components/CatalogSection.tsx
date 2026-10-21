@@ -109,13 +109,13 @@ export const CatalogSection: React.FC = () => {
         {/* Section Header & Subtitle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-amber-700 mb-1">
               Live Stock Inventory
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B0E14] tracking-tight">
               {activeCategoryTitle}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            <p className="text-xs sm:text-sm text-stone-500 mt-1">
               Showing {filteredProducts.length} verified {filteredProducts.length === 1 ? 'model' : 'models'} available for immediate fulfillment
             </p>
           </div>
@@ -124,39 +124,39 @@ export const CatalogSection: React.FC = () => {
           {hasActiveFilters && (
             <button
               onClick={resetAllFilters}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-950 bg-white border border-slate-300 hover:border-slate-400 transition-colors cursor-pointer self-start md:self-auto"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-stone-700 hover:text-[#0B0E14] bg-white border border-stone-300 hover:border-amber-600/40 transition-colors cursor-pointer self-start md:self-auto"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-3.5 h-3.5 text-amber-600" />
               <span>Reset Filters</span>
             </button>
           )}
         </div>
 
         {/* Serious Automatic Volume Tiers Banner */}
-        <div className="mb-6 p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <div className="mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-slate-900" />
-            <strong className="text-slate-900">Tiered Wholesale Pricing:</strong>
-            <span className="text-slate-600">Discounts calculate automatically across all flavors in cart</span>
+            <span className="w-2 h-2 rounded-full bg-amber-600" />
+            <strong className="text-amber-950 font-bold">Tiered Wholesale Pricing:</strong>
+            <span className="text-stone-700">Discounts calculate automatically across all flavors in cart</span>
           </div>
           <div className="flex items-center gap-2 font-mono text-[11px] flex-wrap">
-            <span className="px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-slate-800 font-semibold">50+ units: -8%</span>
-            <span className="px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-slate-800 font-semibold">100+ units: -15%</span>
-            <span className="px-2.5 py-1 rounded bg-slate-900 text-white font-semibold">250+ units: -20%</span>
+            <span className="px-2.5 py-1 rounded bg-white border border-amber-300/80 text-stone-800 font-semibold shadow-2xs">50+ units: -8%</span>
+            <span className="px-2.5 py-1 rounded bg-white border border-amber-300/80 text-stone-800 font-semibold shadow-2xs">100+ units: -15%</span>
+            <span className="px-2.5 py-1 rounded bg-[#0B0E14] border border-amber-500/30 text-amber-300 font-semibold shadow-2xs">250+ units: -20%</span>
           </div>
         </div>
 
         {/* Filter Controls Toolbar */}
-        <div className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs mb-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+        <div className="bg-white p-3 sm:p-4 rounded-xl border border-stone-200 shadow-2xs mb-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
           {/* Brand Filter & Stock Toggles */}
           <div className="flex flex-wrap items-center gap-3">
             {/* Brand Dropdown */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-slate-500">Brand:</span>
+              <span className="text-xs font-semibold text-stone-500">Brand:</span>
               <select
                 value={selectedBrand}
                 onChange={(e) => setSelectedBrand(e.target.value)}
-                className="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-50 border border-slate-200 text-slate-800 focus:outline-none focus:border-slate-900"
+                className="px-3 py-1.5 text-xs font-medium rounded-lg bg-stone-50 border border-stone-200 text-stone-800 focus:outline-none focus:border-[#0B0E14]"
               >
                 <option value="all">All Brands ({PRODUCTS.length})</option>
                 {availableBrands.map((b) => (
@@ -168,23 +168,23 @@ export const CatalogSection: React.FC = () => {
             </div>
 
             {/* In-Stock Toggle */}
-            <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer text-xs font-medium text-slate-700 hover:bg-slate-100 transition-colors select-none">
+            <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stone-50 border border-stone-200 cursor-pointer text-xs font-medium text-stone-700 hover:bg-stone-100 transition-colors select-none">
               <input
                 type="checkbox"
                 checked={stockOnly}
                 onChange={(e) => setStockOnly(e.target.checked)}
-                className="w-3.5 h-3.5 rounded text-slate-900 accent-slate-900"
+                className="w-3.5 h-3.5 rounded text-[#0B0E14] accent-[#0B0E14]"
               />
               <span>In Stock Only</span>
             </label>
 
             {/* New Arrivals Toggle */}
-            <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer text-xs font-medium text-slate-700 hover:bg-slate-100 transition-colors select-none">
+            <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stone-50 border border-stone-200 cursor-pointer text-xs font-medium text-stone-700 hover:bg-stone-100 transition-colors select-none">
               <input
                 type="checkbox"
                 checked={newOnly}
                 onChange={(e) => setNewOnly(e.target.checked)}
-                className="w-3.5 h-3.5 rounded text-slate-900 accent-slate-900"
+                className="w-3.5 h-3.5 rounded text-[#0B0E14] accent-[#0B0E14]"
               />
               <span>New Arrivals</span>
             </label>
@@ -192,12 +192,12 @@ export const CatalogSection: React.FC = () => {
 
           {/* Sort Controller */}
           <div className="flex items-center gap-2 self-end lg:self-auto">
-            <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-xs font-semibold text-slate-500">Sort by:</span>
+            <ArrowUpDown className="w-3.5 h-3.5 text-stone-400" />
+            <span className="text-xs font-semibold text-stone-500">Sort by:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-900"
+              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-stone-50 border border-stone-200 text-stone-900 focus:outline-none focus:border-[#0B0E14]"
             >
               <option value="featured">Featured Catalog</option>
               <option value="popular">Stock Volume: High to Low</option>
@@ -210,19 +210,19 @@ export const CatalogSection: React.FC = () => {
 
         {/* Product Cards Grid */}
         {filteredProducts.length === 0 ? (
-          <div className="py-20 text-center bg-white rounded-2xl border border-slate-200 p-8 max-w-lg mx-auto">
-            <div className="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-4">
+          <div className="py-20 text-center bg-white rounded-2xl border border-stone-200 p-8 max-w-lg mx-auto">
+            <div className="w-14 h-14 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 mx-auto mb-4">
               <Search className="w-6 h-6" />
             </div>
-            <h3 className="text-base font-bold text-slate-950">
+            <h3 className="text-base font-bold text-[#0B0E14]">
               No matching products found
             </h3>
-            <p className="mt-1 text-xs text-slate-500 leading-relaxed">
+            <p className="mt-1 text-xs text-stone-500 leading-relaxed">
               Reset your active filters or select a different category.
             </p>
             <button
               onClick={resetAllFilters}
-              className="mt-5 px-5 py-2.5 rounded-lg bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors cursor-pointer"
+              className="mt-5 px-5 py-2.5 rounded-lg bg-[#0B0E14] text-amber-300 text-xs font-semibold hover:bg-stone-800 transition-colors cursor-pointer"
             >
               Show All Products
             </button>

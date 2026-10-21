@@ -3,6 +3,17 @@
 @theme {
   --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --color-gold-50: #fdfbf4;
+  --color-gold-100: #fbf5e4;
+  --color-gold-200: #f5e7bf;
+  --color-gold-300: #edd393;
+  --color-gold-400: #e2ba64;
+  --color-gold-500: #c59b27;
+  --color-gold-600: #b0821b;
+  --color-gold-700: #8c6317;
+  --color-obsidian-950: #080b10;
+  --color-obsidian-900: #0d1118;
+  --color-obsidian-800: #141a24;
 }
 
 /* Custom scrollbar hiding utility */
@@ -17,4 +28,9 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #0b0e14;
+  color: #f5d77f;
 }
