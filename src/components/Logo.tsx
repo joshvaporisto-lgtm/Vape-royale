@@ -54,7 +54,7 @@ export const Logo: React.FC<LogoProps> = ({
             referrerPolicy="no-referrer"
           />
         ) : (
-          /* High-Precision Scalable SVG Fallback Emblem with Royal Gold Accents */
+          /* High-Precision Scalable SVG Fallback Emblem with Aged Champagne Gold */
           <svg
             viewBox="0 0 32 32"
             fill="none"
@@ -63,11 +63,11 @@ export const Logo: React.FC<LogoProps> = ({
           >
             <path
               d="M10 8L13 11L16 6.5L19 11L22 8L21 12H11L10 8Z"
-              fill="#D4AF37"
+              fill="#C5A880"
             />
             <path
               d="M16 13L22 16.5V23.5L16 27.5L10 23.5V16.5L16 13Z"
-              stroke="#D4AF37"
+              stroke="#C5A880"
               strokeWidth="1.2"
               fill="none"
             />
@@ -85,12 +85,12 @@ export const Logo: React.FC<LogoProps> = ({
       {/* Structured Wordmark Typography */}
       <div className="flex flex-col leading-none">
         <div className={`font-sans uppercase ${titleSizes} tracking-tight`}>
-          <span className={isDark ? 'text-white' : 'text-[#0B0E14]'}>Vape </span>
-          <span className={isDark ? 'text-amber-400' : 'text-[#B0821B]'}>Royale</span>
+          <span className={isDark ? 'text-white' : 'text-[#0C0E13]'}>Vape </span>
+          <span className={isDark ? 'text-[#D4B68D]' : 'text-[#B89360]'}>Royale</span>
         </div>
         {showSubtitle && (
           <span
-            className={`font-sans uppercase font-semibold mt-0.5 ${subtitleSizes} ${
+            className={`font-sans uppercase font-medium mt-0.5 tracking-[0.16em] ${subtitleSizes} ${
               isDark ? 'text-stone-400' : 'text-stone-500'
             }`}
           >

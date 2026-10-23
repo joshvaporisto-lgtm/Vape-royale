@@ -2,8 +2,8 @@ import { Category, PricingTier, Product, StoreConfig, WholesaleAccount } from '.
 
 export const STORE_CONFIG: StoreConfig = {
   name: 'Vape Royale',
-  // Direct WhatsApp dispatch contact (International digits without + or spaces)
-  whatsapp: (import.meta.env.VITE_WHATSAPP_NUMBER as string) || '15550001234',
+  // Direct WhatsApp dispatch contact: +61 480 850 123 (Australian international format)
+  whatsapp: (import.meta.env.VITE_WHATSAPP_NUMBER as string) || '61480850123',
   currency: '$',
   freeShippingThreshold: 100,
   freeRetail: 100,

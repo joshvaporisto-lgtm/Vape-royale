@@ -101,20 +101,20 @@ export const ProductDetailModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto bg-[#080B10]/80 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden my-auto max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto bg-[#07090C]/85 backdrop-blur-xs animate-in fade-in duration-150">
+      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-[#EAE6DF] overflow-hidden my-auto max-h-[92vh] flex flex-col">
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-stone-50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#EAE6DF] bg-[#FAF8F5]">
           <div className="flex items-center gap-2 text-xs font-semibold text-stone-600">
-            <span className="uppercase tracking-wider text-amber-800">{product.brand}</span>
+            <span className="uppercase tracking-wider text-[#80602D]">{product.brand}</span>
             <span aria-hidden="true" className="text-stone-300">·</span>
             <span className="capitalize">{product.cat}</span>
             <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-[#0B0E14] font-mono">Box Pack: {product.pack} units</span>
+            <span className="text-[#0C0E13] font-mono">Box Pack: {product.pack} units</span>
           </div>
           <button
             onClick={() => setActiveProductId(null)}
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 hover:text-[#0B0E14] hover:bg-stone-200 transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 hover:text-[#0C0E13] hover:bg-[#EBE7DF] transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -126,18 +126,18 @@ export const ProductDetailModal: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
             {/* Left Column: Product Visual & Highlights */}
             <div className="md:col-span-5 flex flex-col items-center">
-              <div className="w-full aspect-square rounded-xl overflow-hidden border border-stone-200 bg-stone-50 p-3 flex items-center justify-center">
+              <div className="w-full aspect-square rounded-xl overflow-hidden border border-[#EAE6DF] bg-[#F8F6F2] p-3 flex items-center justify-center">
                 <ProductArt product={product} size="lg" />
               </div>
 
-              <div className="w-full mt-4 p-4 rounded-xl bg-stone-50 border border-stone-200 text-xs space-y-2 text-stone-700">
+              <div className="w-full mt-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE6DF] text-xs space-y-2 text-stone-700">
                 <div className="flex justify-between">
                   <span className="font-medium text-stone-500">Nicotine Strength:</span>
-                  <span className="font-semibold text-[#0B0E14]">{product.nic}</span>
+                  <span className="font-semibold text-[#0C0E13]">{product.nic}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium text-stone-500">Packaging Format:</span>
-                  <span className="font-semibold text-[#0B0E14]">{product.pack} units per case box</span>
+                  <span className="font-semibold text-[#0C0E13]">{product.pack} units per case box</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium text-stone-500">Stock Availability:</span>
@@ -150,7 +150,7 @@ export const ProductDetailModal: React.FC = () => {
 
             {/* Right Column: Title, Description, and Tier Ladder */}
             <div className="md:col-span-7 flex flex-col">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0B0E14] tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0C0E13] tracking-tight">
                 {product.name}
               </h2>
 
@@ -159,13 +159,13 @@ export const ProductDetailModal: React.FC = () => {
               </p>
 
               {/* Automatic Volume Tier Table */}
-              <div className="mt-5 rounded-xl border border-stone-200 overflow-hidden bg-white">
-                <div className="bg-amber-500/10 px-4 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs font-semibold text-amber-950">
+              <div className="mt-5 rounded-xl border border-[#EAE6DF] overflow-hidden bg-white">
+                <div className="bg-[#F8F5EE] px-4 py-2.5 border-b border-[#E8DFC8] flex items-center justify-between text-xs font-semibold text-[#6D4F23]">
                   <span className="flex items-center gap-1.5 font-bold">
-                    <Tag className="w-3.5 h-3.5 text-amber-700" />
+                    <Tag className="w-3.5 h-3.5 text-[#B58742]" />
                     Tiered Volume Pricing Schedule
                   </span>
-                  <span className="text-amber-800 font-semibold text-[11px]">
+                  <span className="text-[#80602D] font-semibold text-[11px]">
                     Automatic in Cart
                   </span>
                 </div>
@@ -179,11 +179,11 @@ export const ProductDetailModal: React.FC = () => {
                       <div
                         key={tier.min}
                         className={`flex items-center justify-between px-4 py-2.5 transition-colors ${
-                          isCurrentActive ? 'bg-amber-500/10 font-bold text-[#0B0E14]' : 'text-stone-700'
+                          isCurrentActive ? 'bg-[#F5EFE6] font-bold text-[#0C0E13]' : 'text-stone-700'
                         }`}
                       >
                         <div className="flex items-center gap-2">
-                          {isCurrentActive && <Check className="w-3.5 h-3.5 text-amber-700" />}
+                          {isCurrentActive && <Check className="w-3.5 h-3.5 text-[#B58742]" />}
                           <span>{tier.label}</span>
                         </div>
                         <div className="tabular-nums font-mono font-semibold">
@@ -202,19 +202,19 @@ export const ProductDetailModal: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setAllFlavorsQty(5)}
-                    className="px-2.5 py-1 rounded bg-stone-100 hover:bg-stone-200 font-medium text-stone-700 transition-colors cursor-pointer text-[11px]"
+                    className="px-2.5 py-1 rounded bg-[#F5F2EC] hover:bg-[#EBE7DF] font-medium text-stone-700 transition-colors cursor-pointer text-[11px]"
                   >
                     +5 Each
                   </button>
                   <button
                     onClick={() => setAllFlavorsQty(10)}
-                    className="px-2.5 py-1 rounded bg-stone-100 hover:bg-stone-200 font-medium text-stone-700 transition-colors cursor-pointer text-[11px]"
+                    className="px-2.5 py-1 rounded bg-[#F5F2EC] hover:bg-[#EBE7DF] font-medium text-stone-700 transition-colors cursor-pointer text-[11px]"
                   >
                     +10 Each
                   </button>
                   <button
                     onClick={() => setAllFlavorsQty(0)}
-                    className="px-2.5 py-1 rounded bg-stone-100 hover:bg-stone-200 font-medium text-stone-700 transition-colors cursor-pointer text-[11px]"
+                    className="px-2.5 py-1 rounded bg-[#F5F2EC] hover:bg-[#EBE7DF] font-medium text-stone-700 transition-colors cursor-pointer text-[11px]"
                   >
                     Clear All
                   </button>
@@ -224,9 +224,9 @@ export const ProductDetailModal: React.FC = () => {
           </div>
 
           {/* Multi-Flavor Quantity Configuration Matrix */}
-          <div className="mt-6 pt-4 border-t border-stone-200">
+          <div className="mt-6 pt-4 border-t border-[#EAE6DF]">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-bold text-[#0B0E14]">
+              <h3 className="text-sm font-bold text-[#0C0E13]">
                 Select Quantities per {product.cat === 'devices' || product.cat === 'accessories' ? 'Option' : 'Flavor'}
               </h3>
               <span className="text-xs text-stone-500">
@@ -242,27 +242,27 @@ export const ProductDetailModal: React.FC = () => {
                     key={flavor}
                     className={`p-3 rounded-xl border transition-all flex items-center justify-between gap-3 ${
                       qty > 0
-                        ? 'border-amber-700/60 bg-amber-50/20'
-                        : 'border-stone-200 bg-white hover:border-stone-300'
+                        ? 'border-[#B89360] bg-[#FAF6F0]'
+                        : 'border-[#EAE6DF] bg-white hover:border-[#D5CEBF]'
                     }`}
                   >
                     <div className="flex flex-col min-w-0">
-                      <span className="text-xs font-semibold text-[#0B0E14] truncate">
+                      <span className="text-xs font-semibold text-[#0C0E13] truncate">
                         {flavor}
                       </span>
                       {qty > 0 && (
-                        <span className="text-[11px] text-amber-800 font-mono mt-0.5">
+                        <span className="text-[11px] text-[#80602D] font-mono mt-0.5">
                           Subtotal: {formatMoney(qty * activeUnitPrice)}
                         </span>
                       )}
                     </div>
 
                     {/* Quantity Stepper */}
-                    <div className="inline-flex items-center rounded-lg bg-white border border-stone-200 p-0.5 shrink-0">
+                    <div className="inline-flex items-center rounded-lg bg-white border border-[#EAE6DF] p-0.5 shrink-0">
                       <button
                         onClick={() => handleQtyChange(flavor, -1)}
                         disabled={qty <= 0}
-                        className="w-7 h-7 rounded flex items-center justify-center text-stone-700 hover:bg-stone-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                        className="w-7 h-7 rounded flex items-center justify-center text-stone-700 hover:bg-[#F5F2EC] disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
                         aria-label={`Decrease ${flavor} quantity`}
                       >
                         <Minus className="w-3.5 h-3.5" />
@@ -273,13 +273,13 @@ export const ProductDetailModal: React.FC = () => {
                         inputMode="numeric"
                         value={qty}
                         onChange={(e) => handleDirectInput(flavor, e.target.value)}
-                        className="w-12 text-center text-xs font-bold font-mono bg-transparent focus:outline-none tabular-nums text-[#0B0E14]"
+                        className="w-12 text-center text-xs font-bold font-mono bg-transparent focus:outline-none tabular-nums text-[#0C0E13]"
                         aria-label={`${flavor} quantity`}
                       />
 
                       <button
                         onClick={() => handleQtyChange(flavor, 1)}
-                        className="w-7 h-7 rounded flex items-center justify-center text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
+                        className="w-7 h-7 rounded flex items-center justify-center text-stone-700 hover:bg-[#F5F2EC] transition-colors cursor-pointer"
                         aria-label={`Increase ${flavor} quantity`}
                       >
                         <Plus className="w-3.5 h-3.5" />
@@ -293,16 +293,16 @@ export const ProductDetailModal: React.FC = () => {
         </div>
 
         {/* Sticky Action & Summary Footer */}
-        <div className="p-4 sm:p-5 bg-white border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-4 sm:p-5 bg-white border-t border-[#EAE6DF] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col">
             <div className="flex items-center gap-3">
-              <span className="text-base font-extrabold text-[#0B0E14] font-mono tabular-nums">
+              <span className="text-base font-extrabold text-[#0C0E13] font-mono tabular-nums">
                 {newlySelectedUnits} Units
               </span>
               <span className="text-xs text-stone-500">
                 ({formatMoney(activeUnitPrice)} / unit)
               </span>
-              <span className="text-xs font-bold text-amber-800 font-mono">
+              <span className="text-xs font-bold text-[#80602D] font-mono">
                 Total: {formatMoney(selectionSubtotal)}
               </span>
             </div>
@@ -317,17 +317,17 @@ export const ProductDetailModal: React.FC = () => {
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <button
               onClick={() => setActiveProductId(null)}
-              className="px-4 py-2.5 rounded-lg border border-stone-300 text-xs font-semibold text-stone-700 hover:bg-stone-50 transition-colors cursor-pointer"
+              className="px-4 py-2.5 rounded-lg border border-stone-300 text-xs font-semibold text-stone-700 hover:bg-[#FAF8F5] transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               onClick={handleAddAllToCart}
               disabled={newlySelectedUnits === 0}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#0B0E14] hover:bg-stone-800 text-white text-xs font-semibold shadow-sm disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer border border-stone-900"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#0C0E13] hover:bg-[#1A1E28] text-white text-xs font-semibold shadow-sm disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer border border-stone-900"
             >
               <span>Add to Order Bag ({newlySelectedUnits})</span>
-              <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#D4B68D]" />
             </button>
           </div>
         </div>

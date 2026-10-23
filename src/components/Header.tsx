@@ -19,14 +19,14 @@ export const Header: React.FC = () => {
   )}`;
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200">
-      {/* Top Banner: Minimalist Obsidian & Champagne Gold Bar */}
-      <div className="bg-[#080B10] text-stone-300 text-xs py-2 border-b border-amber-500/15">
+    <header className="sticky top-0 z-40 bg-white/98 backdrop-blur-md border-b border-[#EAE6DF]">
+      {/* Top Banner: Minimalist Noir & Champagne Gold Bar */}
+      <div className="bg-[#07090C] text-stone-300 text-xs py-2 border-b border-[#C5A880]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2 tracking-normal text-stone-300">
             <span className="font-semibold text-white">Commercial Wholesale & Retail Fulfillment</span>
-            <span aria-hidden="true" className="text-amber-500/60">·</span>
-            <span>Free delivery on orders over <strong className="text-amber-400 font-mono">${STORE_CONFIG.freeShippingThreshold}</strong></span>
+            <span aria-hidden="true" className="text-[#C5A880]/50">·</span>
+            <span>Free delivery on orders over <strong className="text-[#D4B68D] font-mono">${STORE_CONFIG.freeShippingThreshold}</strong></span>
           </div>
 
           <div className="flex items-center gap-4 text-xs font-medium">
@@ -44,9 +44,9 @@ export const Header: React.FC = () => {
 
             <button
               onClick={() => setIsOrdersOpen(true)}
-              className="text-stone-300 hover:text-amber-300 transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+              className="text-stone-300 hover:text-[#D4B68D] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
             >
-              <Clock className="w-3.5 h-3.5 text-amber-500/80" />
+              <Clock className="w-3.5 h-3.5 text-[#C5A880]" />
               <span>Past Orders {orders.length > 0 ? `(${orders.length})` : ''}</span>
             </button>
           </div>
@@ -80,8 +80,8 @@ export const Header: React.FC = () => {
                 const el = document.getElementById('catalog-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className={`hover:text-[#0B0E14] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'all' ? 'text-[#0B0E14] font-bold' : ''
+              className={`hover:text-[#0C0E13] transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'all' ? 'text-[#0C0E13] font-bold border-b-2 border-[#B89360] pb-0.5' : ''
               }`}
             >
               All Inventory
@@ -92,8 +92,8 @@ export const Header: React.FC = () => {
                 const el = document.getElementById('catalog-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className={`hover:text-[#0B0E14] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'disposables' ? 'text-[#0B0E14] font-bold' : ''
+              className={`hover:text-[#0C0E13] transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'disposables' ? 'text-[#0C0E13] font-bold border-b-2 border-[#B89360] pb-0.5' : ''
               }`}
             >
               Disposables
@@ -104,8 +104,8 @@ export const Header: React.FC = () => {
                 const el = document.getElementById('catalog-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className={`hover:text-[#0B0E14] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'eliquids' ? 'text-[#0B0E14] font-bold' : ''
+              className={`hover:text-[#0C0E13] transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'eliquids' ? 'text-[#0C0E13] font-bold border-b-2 border-[#B89360] pb-0.5' : ''
               }`}
             >
               E-Liquids
@@ -116,8 +116,8 @@ export const Header: React.FC = () => {
                 const el = document.getElementById('catalog-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className={`hover:text-[#0B0E14] transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'podkits' ? 'text-[#0B0E14] font-bold' : ''
+              className={`hover:text-[#0C0E13] transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'podkits' ? 'text-[#0C0E13] font-bold border-b-2 border-[#B89360] pb-0.5' : ''
               }`}
             >
               Pod Systems
@@ -127,7 +127,7 @@ export const Header: React.FC = () => {
                 const el = document.getElementById('how-it-works');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="hover:text-[#0B0E14] transition-colors whitespace-nowrap cursor-pointer"
+              className="hover:text-[#0C0E13] transition-colors whitespace-nowrap cursor-pointer"
             >
               Fulfillment Protocol
             </button>
@@ -135,15 +135,15 @@ export const Header: React.FC = () => {
 
           {/* Zone 3: Direct WhatsApp & Cart Actions */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* Direct WhatsApp Action */}
+            {/* Direct WhatsApp Action - British Racing Green */}
             <a
               href={directWhatsAppUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-700 hover:text-white transition-colors"
-              title="Chat directly with dispatch desk on WhatsApp"
+              className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[#124E33] text-white hover:bg-[#0E3D28] transition-colors border border-[#165B3C] shadow-xs"
+              title="Chat directly with dispatch desk on WhatsApp (+61 480 850 123)"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-300" />
               <span className="hidden sm:inline">WhatsApp Dispatch</span>
               <span className="sm:hidden">Chat</span>
             </a>
@@ -151,12 +151,12 @@ export const Header: React.FC = () => {
             {/* Shopping Cart Button */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative flex items-center gap-2.5 px-4 py-2 text-xs font-semibold rounded-lg bg-[#0B0E14] text-white hover:bg-stone-800 transition-colors cursor-pointer shrink-0 shadow-sm border border-stone-800"
+              className="relative flex items-center gap-2.5 px-4 py-2 text-xs font-semibold rounded-lg bg-[#0C0E13] text-white hover:bg-[#181C25] transition-colors cursor-pointer shrink-0 shadow-sm border border-stone-800"
               aria-label="Open Shopping Cart"
             >
-              <ShoppingBag className="w-4 h-4 text-amber-400" />
+              <ShoppingBag className="w-4 h-4 text-[#D4B68D]" />
               <span className="hidden sm:inline">Order Bag</span>
-              <span className="min-w-5 h-5 px-1 flex items-center justify-center rounded-md text-[11px] font-bold bg-amber-500/20 text-amber-300 tabular-nums">
+              <span className="min-w-5 h-5 px-1 flex items-center justify-center rounded-md text-[11px] font-bold bg-[#C5A880]/20 text-[#D4B68D] tabular-nums">
                 {cartCount}
               </span>
             </button>
@@ -164,7 +164,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Quick Category Filter Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none mt-1 border-t border-stone-100 pt-2.5">
+        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none mt-1 border-t border-[#F0ECE4] pt-2.5">
           <button
             onClick={() => {
               setActiveCategory('all');
@@ -173,8 +173,8 @@ export const Header: React.FC = () => {
             }}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               activeCategory === 'all'
-                ? 'bg-[#0B0E14] text-amber-300 shadow-2xs'
-                : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                ? 'bg-[#0C0E13] text-[#D4B68D] shadow-2xs'
+                : 'bg-[#F5F2EC] text-stone-700 hover:bg-[#EBE7DF] border border-transparent hover:border-[#DDD7CD]'
             }`}
           >
             All Products
@@ -189,8 +189,8 @@ export const Header: React.FC = () => {
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#0B0E14] text-amber-300 shadow-2xs'
-                  : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                  ? 'bg-[#0C0E13] text-[#D4B68D] shadow-2xs'
+                  : 'bg-[#F5F2EC] text-stone-700 hover:bg-[#EBE7DF] border border-transparent hover:border-[#DDD7CD]'
               }`}
             >
               {cat.name}

@@ -16,7 +16,7 @@ import { Toast } from './components/Toast';
 export default function App() {
   return (
     <StoreProvider>
-      <div className="min-h-screen bg-[#F9F8F5] text-[#0E121B] flex flex-col font-sans selection:bg-[#0B0E14] selection:text-[#F5D77F] antialiased">
+      <div className="min-h-screen bg-[#FAF8F5] text-[#12141A] flex flex-col font-sans selection:bg-[#0C0E13] selection:text-[#D4B68D] antialiased">
         {/* Navigation & Header */}
         <Header />
 

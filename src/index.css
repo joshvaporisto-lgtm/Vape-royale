@@ -3,17 +3,19 @@
 @theme {
   --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --color-gold-50: #fdfbf4;
-  --color-gold-100: #fbf5e4;
-  --color-gold-200: #f5e7bf;
-  --color-gold-300: #edd393;
-  --color-gold-400: #e2ba64;
-  --color-gold-500: #c59b27;
-  --color-gold-600: #b0821b;
-  --color-gold-700: #8c6317;
-  --color-obsidian-950: #080b10;
-  --color-obsidian-900: #0d1118;
-  --color-obsidian-800: #141a24;
+  --color-champagne-50: #fbf9f5;
+  --color-champagne-100: #f5efe6;
+  --color-champagne-200: #eadec9;
+  --color-champagne-300: #d4b68d;
+  --color-champagne-400: #c5a880;
+  --color-champagne-500: #b89360;
+  --color-champagne-600: #9e7943;
+  --color-champagne-700: #7a5a2b;
+  --color-noir-950: #07090c;
+  --color-noir-900: #0c0e13;
+  --color-noir-850: #12151c;
+  --color-noir-800: #181c25;
+  --color-racing-green: #124e33;
 }
 
 /* Custom scrollbar hiding utility */
@@ -31,6 +33,6 @@ html {
 }
 
 ::selection {
-  background-color: #0b0e14;
-  color: #f5d77f;
+  background-color: #0c0e13;
+  color: #d4b68d;
 }

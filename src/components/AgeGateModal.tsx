@@ -11,19 +11,19 @@ export const AgeGateModal: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#080B10]/90 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#07090C]/90 backdrop-blur-md animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="age-gate-title"
     >
-      <div className="w-full max-w-md bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-stone-200 text-center flex flex-col items-center">
+      <div className="w-full max-w-md bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-[#EAE6DF] text-center flex flex-col items-center">
         <Logo size="lg" className="mb-4" />
 
-        <h2 id="age-gate-title" className="text-lg sm:text-xl font-bold text-[#0B0E14]">
+        <h2 id="age-gate-title" className="text-lg sm:text-xl font-serif font-bold text-[#0C0E13]">
           Age Verification Required
         </h2>
 
-        <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
+        <p className="mt-2 text-xs sm:text-sm text-[#6F6B64] leading-relaxed">
           This portal distributes adult nicotine and inhalation vapor products. You must be at least 21 years of age (or 18+ where governed by local jurisdiction) to enter.
         </p>
 
@@ -37,19 +37,19 @@ export const AgeGateModal: React.FC = () => {
         <div className="mt-6 flex flex-col sm:flex-row gap-2.5 w-full">
           <button
             onClick={() => verifyAge(true)}
-            className="flex-1 py-3 px-4 rounded-lg bg-[#0B0E14] hover:bg-stone-800 text-white font-semibold text-xs transition-all cursor-pointer shadow-sm border border-stone-900"
+            className="flex-1 py-3 px-4 rounded-lg bg-[#0C0E13] hover:bg-[#1E222B] text-[#FAF8F5] font-semibold text-xs transition-all cursor-pointer shadow-sm border border-[#242833]"
           >
             I am 21 or older (Enter)
           </button>
           <button
             onClick={() => setDenied(true)}
-            className="py-3 px-4 rounded-lg border border-stone-300 hover:bg-stone-50 text-stone-700 font-semibold text-xs transition-colors cursor-pointer"
+            className="py-3 px-4 rounded-lg border border-[#EAE6DF] hover:bg-[#FAF8F5] text-[#3C3A36] font-semibold text-xs transition-colors cursor-pointer"
           >
             Under Legal Age
           </button>
         </div>
 
-        <p className="mt-4 text-[11px] text-stone-400">
+        <p className="mt-4 text-[11px] text-[#9B9790]">
           Strict age gate verification is mandated by federal and regional tobacco laws.
         </p>
       </div>

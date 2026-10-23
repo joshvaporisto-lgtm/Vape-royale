@@ -30,22 +30,22 @@ export const Hero: React.FC = () => {
   )}`;
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-12 lg:pt-16 lg:pb-20 border-b border-stone-200 bg-[#FAF9F6]">
+    <section className="relative overflow-hidden pt-8 pb-12 lg:pt-16 lg:pb-20 border-b border-[#EAE6DF] bg-[#FAF8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Serious Headline & Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Context Notice with Royal Gold Accent */}
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-800 mb-4 bg-amber-500/10 px-3 py-1 rounded-md border border-amber-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+            {/* Context Notice with Aged Champagne Gold Accent */}
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#80602D] mb-4 bg-[#F6F2E9] px-3 py-1 rounded-md border border-[#E8DFC8]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B58742]" />
               <span>Commercial Distribution & Direct Fulfillment</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0B0E14] leading-[1.08] text-balance">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0C0E13] leading-[1.08] text-balance">
               Direct Commercial Vapor Distribution & Fast Dispatch.
             </h1>
 
-            <p className="mt-5 text-base sm:text-lg text-stone-600 max-w-xl leading-relaxed">
+            <p className="mt-5 text-base sm:text-lg text-[#6B665E] max-w-xl leading-relaxed">
               Authentic factory-sealed vaporizers, closed pod systems, and premium nicotine solutions. Select exact unit quantities per flavor with transparent volume tier pricing and direct WhatsApp dispatch verification.
             </p>
 
@@ -56,35 +56,35 @@ export const Hero: React.FC = () => {
                   const catalog = document.getElementById('catalog-section');
                   if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#0B0E14] text-white font-semibold text-sm hover:bg-stone-800 transition-all cursor-pointer shadow-sm border border-stone-900"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#0C0E13] text-white font-semibold text-sm hover:bg-[#1A1E28] transition-all cursor-pointer shadow-sm border border-stone-900"
               >
                 <span>View Product Inventory</span>
-                <ArrowRight className="w-4 h-4 text-amber-400" />
+                <ArrowRight className="w-4 h-4 text-[#D4B68D]" />
               </button>
 
               <a
                 href={directWhatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 shadow-sm transition-all cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#124E33] hover:bg-[#0E3D28] text-white font-semibold text-sm shadow-sm transition-all cursor-pointer border border-[#165B3C]"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 text-emerald-300" />
                 <span>Transmit Order via WhatsApp</span>
               </a>
             </div>
 
             {/* Quiet Architectural Proof Row */}
-            <div className="mt-10 pt-6 border-t border-stone-200 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+            <div className="mt-10 pt-6 border-t border-[#EAE6DF] grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
               <div className="flex items-center gap-2.5 text-xs text-stone-700">
-                <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#B58742] shrink-0" />
                 <span className="font-semibold">Factory Batch Authenticity</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-stone-700">
-                <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#B58742] shrink-0" />
                 <span className="font-semibold">Direct Courier Tracking</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-stone-700">
-                <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#B58742] shrink-0" />
                 <span className="font-semibold">Settlement on Delivery</span>
               </div>
             </div>
@@ -92,14 +92,14 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: High-End Studio Product Showcase */}
           <div className="lg:col-span-5">
-            <div className="rounded-2xl p-6 sm:p-7 bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
+            <div className="rounded-2xl p-6 sm:p-7 bg-white border border-[#EAE6DF] shadow-xs flex flex-col justify-between">
               {/* Product Header */}
-              <div className="flex items-start justify-between pb-4 border-b border-stone-100">
+              <div className="flex items-start justify-between pb-4 border-b border-[#F0ECE4]">
                 <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-amber-700">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#80602D]">
                     Flagship Inventory Allocation
                   </div>
-                  <h3 className="font-bold text-base text-[#0B0E14] mt-0.5">
+                  <h3 className="font-bold text-base text-[#0C0E13] mt-0.5">
                     {featuredProduct.name}
                   </h3>
                   <div className="text-xs font-semibold text-stone-700 mt-0.5">
@@ -109,14 +109,14 @@ export const Hero: React.FC = () => {
 
                 <button
                   onClick={() => setActiveProductId(featuredProduct.id)}
-                  className="px-3 py-1.5 rounded-lg bg-[#0B0E14] text-amber-300 text-xs font-semibold hover:bg-stone-800 transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-[#0C0E13] text-[#D4B68D] text-xs font-semibold hover:bg-[#1A1E28] transition-colors cursor-pointer"
                 >
                   Configure Flavors
                 </button>
               </div>
 
               {/* Clean Studio Product Frame */}
-              <div className="my-6 relative aspect-square rounded-xl overflow-hidden bg-stone-50 border border-stone-100 flex items-center justify-center p-4">
+              <div className="my-6 relative aspect-square rounded-xl overflow-hidden bg-[#F8F6F2] border border-[#EBE7E0] flex items-center justify-center p-4">
                 <img
                   src={encodeURI(
                     featuredProduct.image
@@ -128,7 +128,7 @@ export const Hero: React.FC = () => {
                   referrerPolicy="no-referrer"
                 />
 
-                <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded bg-[#0B0E14]/90 text-amber-300 text-[11px] font-mono tabular-nums">
+                <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded bg-[#0C0E13]/90 text-[#D4B68D] text-[11px] font-mono tabular-nums border border-[#C5A880]/30">
                   Flavor: {activeFlavor.name}
                 </div>
               </div>
@@ -149,8 +149,8 @@ export const Hero: React.FC = () => {
                         onClick={() => setActiveFlavor(f)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap shrink-0 border ${
                           isSelected
-                            ? 'bg-[#0B0E14] text-amber-300 border-[#0B0E14] font-semibold shadow-2xs'
-                            : 'bg-stone-50 text-stone-700 border-stone-200 hover:border-amber-700/40'
+                            ? 'bg-[#0C0E13] text-[#D4B68D] border-[#0C0E13] font-semibold shadow-2xs'
+                            : 'bg-[#F7F5F0] text-stone-700 border-[#E5DFD5] hover:border-[#C5A880]/50'
                         }`}
                       >
                         {f.name}
