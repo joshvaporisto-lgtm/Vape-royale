@@ -21,15 +21,15 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-white/98 backdrop-blur-md border-b border-[#EAE6DF]">
       {/* Top Banner: Minimalist Noir & Champagne Gold Bar */}
-      <div className="bg-[#07090C] text-stone-300 text-xs py-2 border-b border-[#C5A880]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2 tracking-normal text-stone-300">
+      <div className="bg-[#07090C] text-stone-300 text-xs py-2 border-b border-[#C5A880]/20 w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-0.5 tracking-normal text-stone-300 text-[11px] sm:text-xs">
             <span className="font-semibold text-white">Commercial Wholesale & Retail Fulfillment</span>
-            <span aria-hidden="true" className="text-[#C5A880]/50">·</span>
-            <span>Free delivery on orders over <strong className="text-[#D4B68D] font-mono">${STORE_CONFIG.freeShippingThreshold}</strong></span>
+            <span aria-hidden="true" className="text-[#C5A880]/50 hidden sm:inline">·</span>
+            <span className="block sm:inline">Free delivery on orders over <strong className="text-[#D4B68D] font-mono">${STORE_CONFIG.freeShippingThreshold}</strong></span>
           </div>
 
-          <div className="flex items-center gap-4 text-xs font-medium">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 text-xs font-medium shrink-0">
             <a
               href={directWhatsAppUrl}
               target="_blank"
@@ -54,8 +54,8 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 py-3.5">
-        <div className="flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 py-3 sm:py-3.5">
+        <div className="flex items-center justify-between gap-3 sm:gap-6 lg:gap-8">
           {/* Zone 1: Serious Brand Logo */}
           <div className="shrink-0">
             <a
@@ -164,7 +164,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Quick Category Filter Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none mt-1 border-t border-[#F0ECE4] pt-2.5">
+        <div className="flex items-center gap-1.5 overflow-x-auto py-2 scrollbar-none mt-1 border-t border-[#F0ECE4] pt-2.5 w-full max-w-full touch-pan-x">
           <button
             onClick={() => {
               setActiveCategory('all');

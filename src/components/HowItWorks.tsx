@@ -3,8 +3,8 @@ import { ShoppingBag, MessageCircle, Truck } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="py-14 lg:py-18 bg-[#FAF8F5] border-t border-[#EAE6DF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
+    <section id="how-it-works" className="py-12 sm:py-14 lg:py-18 bg-[#FAF8F5] border-t border-[#EAE6DF] w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 w-full min-w-0">
         <div className="max-w-xl mx-auto text-center mb-12">
           <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#80602D] mb-1">
             Fulfillment Protocol

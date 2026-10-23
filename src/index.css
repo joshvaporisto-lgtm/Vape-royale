@@ -27,9 +27,14 @@
   scrollbar-width: none;
 }
 
-/* Smooth scrolling */
-html {
+/* Smooth scrolling & overflow constraints */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 ::selection {

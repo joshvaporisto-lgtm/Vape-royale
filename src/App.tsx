@@ -16,12 +16,12 @@ import { Toast } from './components/Toast';
 export default function App() {
   return (
     <StoreProvider>
-      <div className="min-h-screen bg-[#FAF8F5] text-[#12141A] flex flex-col font-sans selection:bg-[#0C0E13] selection:text-[#D4B68D] antialiased">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#FAF8F5] text-[#12141A] flex flex-col font-sans selection:bg-[#0C0E13] selection:text-[#D4B68D] antialiased">
         {/* Navigation & Header */}
         <Header />
 
         {/* Main Content Areas */}
-        <main className="flex-1">
+        <main className="flex-1 w-full max-w-full overflow-x-hidden">
           <Hero />
           <CatalogSection />
           <HowItWorks />

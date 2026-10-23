@@ -104,8 +104,8 @@ export const CatalogSection: React.FC = () => {
     sortBy !== 'featured';
 
   return (
-    <section id="catalog-section" className="py-12 lg:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20">
+    <section id="catalog-section" className="py-10 sm:py-12 lg:py-16 w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-20 w-full min-w-0">
         {/* Section Header & Subtitle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
@@ -133,30 +133,30 @@ export const CatalogSection: React.FC = () => {
         </div>
 
         {/* Serious Automatic Volume Tiers Banner */}
-        <div className="mb-6 p-4 rounded-xl bg-[#F8F5EE] border border-[#E8DFC8] shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#B58742]" />
+        <div className="mb-6 p-3 sm:p-4 rounded-xl bg-[#F8F5EE] border border-[#E8DFC8] shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs w-full min-w-0">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+            <span className="w-2 h-2 rounded-full bg-[#B58742] shrink-0" />
             <strong className="text-[#6D4F23] font-bold">Tiered Wholesale Pricing:</strong>
             <span className="text-[#6B665E]">Discounts calculate automatically across all flavors in cart</span>
           </div>
-          <div className="flex items-center gap-2 font-mono text-[11px] flex-wrap">
-            <span className="px-2.5 py-1 rounded bg-white border border-[#E0D7C6] text-stone-800 font-semibold shadow-2xs">50+ units: -8%</span>
-            <span className="px-2.5 py-1 rounded bg-white border border-[#E0D7C6] text-stone-800 font-semibold shadow-2xs">100+ units: -15%</span>
-            <span className="px-2.5 py-1 rounded bg-[#0C0E13] border border-[#C5A880]/40 text-[#D4B68D] font-semibold shadow-2xs">250+ units: -20%</span>
+          <div className="flex items-center gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-[11px] flex-wrap">
+            <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-white border border-[#E0D7C6] text-stone-800 font-semibold shadow-2xs">50+ units: -8%</span>
+            <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-white border border-[#E0D7C6] text-stone-800 font-semibold shadow-2xs">100+ units: -15%</span>
+            <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-[#0C0E13] border border-[#C5A880]/40 text-[#D4B68D] font-semibold shadow-2xs">250+ units: -20%</span>
           </div>
         </div>
 
         {/* Filter Controls Toolbar */}
-        <div className="bg-white p-3 sm:p-4 rounded-xl border border-[#EAE6DF] shadow-2xs mb-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+        <div className="bg-white p-3 sm:p-4 rounded-xl border border-[#EAE6DF] shadow-2xs mb-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 w-full min-w-0">
           {/* Brand Filter & Stock Toggles */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full lg:w-auto">
             {/* Brand Dropdown */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <span className="text-xs font-semibold text-stone-500">Brand:</span>
               <select
                 value={selectedBrand}
                 onChange={(e) => setSelectedBrand(e.target.value)}
-                className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] text-stone-800 focus:outline-none focus:border-[#0C0E13]"
+                className="px-2.5 sm:px-3 py-1.5 text-xs font-medium rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] text-stone-800 focus:outline-none focus:border-[#0C0E13] max-w-[150px] sm:max-w-none truncate"
               >
                 <option value="all">All Brands ({PRODUCTS.length})</option>
                 {availableBrands.map((b) => (
@@ -168,49 +168,51 @@ export const CatalogSection: React.FC = () => {
             </div>
 
             {/* In-Stock Toggle */}
-            <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] cursor-pointer text-xs font-medium text-stone-700 hover:bg-[#F2EEE6] transition-colors select-none">
+            <label className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] cursor-pointer text-xs font-medium text-stone-700 hover:bg-[#F2EEE6] transition-colors select-none">
               <input
                 type="checkbox"
                 checked={stockOnly}
                 onChange={(e) => setStockOnly(e.target.checked)}
                 className="w-3.5 h-3.5 rounded text-[#0C0E13] accent-[#0C0E13]"
               />
-              <span>In Stock Only</span>
+              <span className="text-[11px] sm:text-xs">In Stock</span>
             </label>
 
             {/* New Arrivals Toggle */}
-            <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] cursor-pointer text-xs font-medium text-stone-700 hover:bg-[#F2EEE6] transition-colors select-none">
+            <label className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] cursor-pointer text-xs font-medium text-stone-700 hover:bg-[#F2EEE6] transition-colors select-none">
               <input
                 type="checkbox"
                 checked={newOnly}
                 onChange={(e) => setNewOnly(e.target.checked)}
                 className="w-3.5 h-3.5 rounded text-[#0C0E13] accent-[#0C0E13]"
               />
-              <span>New Arrivals</span>
+              <span className="text-[11px] sm:text-xs">New Arrivals</span>
             </label>
           </div>
 
           {/* Sort Controller */}
-          <div className="flex items-center gap-2 self-end lg:self-auto">
-            <ArrowUpDown className="w-3.5 h-3.5 text-stone-400" />
-            <span className="text-xs font-semibold text-stone-500">Sort by:</span>
+          <div className="flex items-center gap-2 self-start sm:self-auto shrink-0 w-full sm:w-auto justify-between sm:justify-start">
+            <div className="flex items-center gap-1.5 text-stone-500">
+              <ArrowUpDown className="w-3.5 h-3.5" />
+              <span className="text-xs font-semibold">Sort:</span>
+            </div>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] text-stone-900 focus:outline-none focus:border-[#0C0E13]"
+              className="flex-1 sm:flex-none px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#FAF8F5] border border-[#E5DFD5] text-stone-900 focus:outline-none focus:border-[#0C0E13]"
             >
               <option value="featured">Featured Catalog</option>
-              <option value="popular">Stock Volume: High to Low</option>
+              <option value="popular">Stock Volume</option>
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
-              <option value="name">Product Name: A to Z</option>
+              <option value="name">Name: A to Z</option>
             </select>
           </div>
         </div>
 
         {/* Product Cards Grid */}
         {filteredProducts.length === 0 ? (
-          <div className="py-20 text-center bg-white rounded-2xl border border-[#EAE6DF] p-8 max-w-lg mx-auto">
+          <div className="py-20 text-center bg-white rounded-2xl border border-[#EAE6DF] p-6 sm:p-8 max-w-lg mx-auto">
             <div className="w-14 h-14 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 mx-auto mb-4">
               <Search className="w-6 h-6 text-[#C5A880]" />
             </div>
@@ -228,7 +230,7 @@ export const CatalogSection: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6 w-full min-w-0">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

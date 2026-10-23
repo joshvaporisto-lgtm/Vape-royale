@@ -104,17 +104,17 @@ export const ProductDetailModal: React.FC = () => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto bg-[#07090C]/85 backdrop-blur-xs animate-in fade-in duration-150">
       <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-[#EAE6DF] overflow-hidden my-auto max-h-[92vh] flex flex-col">
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#EAE6DF] bg-[#FAF8F5]">
-          <div className="flex items-center gap-2 text-xs font-semibold text-stone-600">
-            <span className="uppercase tracking-wider text-[#80602D]">{product.brand}</span>
+        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 border-b border-[#EAE6DF] bg-[#FAF8F5]">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold text-stone-600 min-w-0 truncate">
+            <span className="uppercase tracking-wider text-[#80602D] shrink-0">{product.brand}</span>
             <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="capitalize">{product.cat}</span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-[#0C0E13] font-mono">Box Pack: {product.pack} units</span>
+            <span className="capitalize truncate">{product.cat}</span>
+            <span aria-hidden="true" className="text-stone-300 hidden sm:inline">·</span>
+            <span className="text-[#0C0E13] font-mono hidden sm:inline">Pack: {product.pack}</span>
           </div>
           <button
             onClick={() => setActiveProductId(null)}
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 hover:text-[#0C0E13] hover:bg-[#EBE7DF] transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-stone-500 hover:text-[#0C0E13] hover:bg-[#EBE7DF] transition-colors cursor-pointer shrink-0"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
